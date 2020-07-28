@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Event name:
+  = @event.event_name
+p
+  strong Start date:
+  = @event.start_date
+p
+  strong End date:
+  = @event.end_date
+p
+  strong Description:
+  = @event.description
+p
+  strong Owner:
+  = @event.owner_id
+
+=> link_to 'Edit', edit_event_path(@event)
+'|
+=< link_to 'Back', events_path

@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Number:
+  = @option.number
+p
+  strong Description:
+  = @option.description
+p
+  strong Amount:
+  = @option.amount
+p
+  strong Event:
+  = @option.event_id
+
+=> link_to 'Edit', edit_option_path(@option)
+'|
+=< link_to 'Back', options_path

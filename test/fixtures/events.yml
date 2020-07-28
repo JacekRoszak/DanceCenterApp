@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_name: MyString
+  start_date: 2020-07-26 18:24:51
+  end_date: 2020-07-26 18:24:51
+  description: MyText
+  owner_id: 1
+
+two:
+  event_name: MyString
+  start_date: 2020-07-26 18:24:51
+  end_date: 2020-07-26 18:24:51
+  description: MyText
+  owner_id: 1
