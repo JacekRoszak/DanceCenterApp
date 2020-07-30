@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_144821) do
+ActiveRecord::Schema.define(version: 2020_07_28_160141) do
 
   create_table "events", force: :cascade do |t|
     t.string "event_name"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 2020_07_28_144821) do
     t.integer "amount"
     t.integer "user_id"
     t.integer "option_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "author_id"
+    t.boolean "is_answer"
+    t.integer "answer_to"
+    t.text "post_content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
