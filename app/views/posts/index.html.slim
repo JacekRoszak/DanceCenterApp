@@ -1,27 +1,29 @@
-h1 Listing posts
 
-table
-  thead
-    tr
-      th Author
-      th Is answer
-      th Answer to
-      th Post content
-      th
-      th
-      th
 
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.author_id
-        td = post.is_answer
-        td = post.answer_to
-        td = post.post_content
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+- @posts.reverse_each do |post|
+    .card.bg-light.mb-1  
+      .row.no-gutters
+        .col-md-3.my-auto
+          .card-body
+            p.card-text.font-weight-bold = User.find(post.author_id).email
+        .col-md-6
+          .card-body
+            p.card-text = post.post_content
+        .col-md-3.my-auto
+          .card-body.p-1.text-center
+            = link_to 'Show', post, class: "btn btn-primary mbs btn-sm"
+            - if (post.author_id == current_user.id)&&(can? :update, Post)
+              = link_to 'Edit', edit_post_path(post), class: "btn btn-primary mbs btn-sm"
+              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary mbs btn-sm"
+            - else 
+              = link_to 'Edit', edit_post_path(post), class: "btn btn-primary mbs btn-sm disabled"
+              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary mbs btn-sm disabled"
+            p.card-text.text-center
+              small.text-muted Created on 
+              small.text-muted = post.created_at
+
+
 
 br
-
-= link_to 'New Post', new_post_path
+.text-center
+  = link_to 'New Post', new_post_path, class: "btn btn-primary mnbs btn-sm "

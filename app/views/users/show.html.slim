@@ -1,0 +1,22 @@
+p#notice = notice
+
+p
+  strong Email: 
+  = @user.email
+p
+  strong Admin: 
+  = @user.admin
+p
+  strong Zin: 
+  = @user.zin
+p
+  strong Can host: 
+  = @user.can_host
+
+p
+  strong Account created: 
+  = @user.created_at
+
+=> link_to 'Edit', edit_user_path(@user)
+'|
+=< link_to 'Back', users_path

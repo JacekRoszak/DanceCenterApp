@@ -1,21 +1,11 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      ul
-        - @post.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :author_id
-    = f.number_field :author_id
-  .field
-    = f.label :is_answer
-    = f.check_box :is_answer
-  .field
-    = f.label :answer_to
-    = f.number_field :answer_to
-  .field
-    = f.label :post_content
-    = f.text_area :post_content
-  .actions = f.submit
+  = form_for @post do |f|
+    - if @post.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        ul
+          - @post.errors.full_messages.each do |message|
+            li = message
+    .field
+      = f.label :post_content
+      = f.text_area :post_content
+    .actions = f.submit
