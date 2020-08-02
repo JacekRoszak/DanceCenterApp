@@ -1,18 +1,18 @@
 p#notice = notice
+br/
+br/
+br/
+br/
+br/
 
-p
-  strong Author:
-  = @post.author_id
-p
-  strong Is answer:
-  = @post.is_answer
-p
-  strong Answer to:
-  = @post.answer_to
-p
-  strong Post content:
-  = @post.post_content
+.my-card
+  .card-body.text-center
+    h6 = @post.post_content
+    br/
+    '~ 
+    = User.find(@post.author_id).email
+    br/
+    br/
+    = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-sm my-a m-1"
+    = link_to  "Wróc", posts_path,  class: "btn btn-sm my-a ml-3"
 
-=> link_to 'Edit', edit_post_path(@post)
-'|
-=< link_to 'Back', posts_path

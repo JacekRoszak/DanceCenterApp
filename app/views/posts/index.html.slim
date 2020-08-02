@@ -1,7 +1,14 @@
-
+nav.navbar.navbar-expand-lg
+    .navbar-collapse.text-center.mt-3.mb-5
+      .text-center.my-nav
+        ul.navbar-nav
+          li.nav-item.mr-lg-5
+            h1 Tablica postów  
+          li.nav-item.mr-lg-5
+            = link_to 'Nowy post', new_post_path, class: "btn btn-sm my-a m-0"
 
 - @posts.reverse_each do |post|
-    .card.bg-light.mb-1  
+    .card.mb-2  
       .row.no-gutters
         .col-md-3.my-auto
           .card-body
@@ -10,20 +17,15 @@
           .card-body
             p.card-text = post.post_content
         .col-md-3.my-auto
-          .card-body.p-1.text-center
-            = link_to 'Show', post, class: "btn btn-primary mbs btn-sm"
+          .card-body.p-1.text-centera
+            = link_to 'Show', post, class: "btn btn-sm my-a my-sm mt-2"
             - if (post.author_id == current_user.id)&&(can? :update, Post)
-              = link_to 'Edit', edit_post_path(post), class: "btn btn-primary mbs btn-sm"
-              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary mbs btn-sm"
-            - else 
-              = link_to 'Edit', edit_post_path(post), class: "btn btn-primary mbs btn-sm disabled"
-              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary mbs btn-sm disabled"
+              = link_to 'Edit', edit_post_path(post), class: "btn btn-sm my-a my-sm mt-2"
+              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-sm my-a my-sm mt-2"
             p.card-text.text-center
               small.text-muted Created on 
               small.text-muted = post.created_at
-
+ 
 
 
 br
-.text-center
-  = link_to 'New Post', new_post_path, class: "btn btn-primary mnbs btn-sm "
