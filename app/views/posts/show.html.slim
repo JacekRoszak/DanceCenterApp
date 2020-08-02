@@ -1,18 +1,12 @@
-p#notice = notice
-br/
-br/
-br/
-br/
-br/
-
-.my-card
-  .card-body.text-center
-    h6 = @post.post_content
-    br/
-    '~ 
-    = User.find(@post.author_id).email
-    br/
-    br/
-    = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-sm my-a m-1"
-    = link_to  "Wróc", posts_path,  class: "btn btn-sm my-a ml-3"
-
+.container-fluid
+  .card.text-center
+    .card-header
+      = User.find(@post.author_id).email
+    .card-body
+      .card-text = @post.post_content
+      br/
+      = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-primary mr-4"
+      = link_to  "Wróc", posts_path,  class: "btn btn-primary"
+    .card-footer 
+      = @post.created_at
+    

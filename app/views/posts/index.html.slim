@@ -1,31 +1,30 @@
-nav.navbar.navbar-expand-lg
-    .navbar-collapse.text-center.mt-3.mb-5
-      .text-center.my-nav
-        ul.navbar-nav
-          li.nav-item.mr-lg-5
-            h1 Tablica postów  
-          li.nav-item.mr-lg-5
-            = link_to 'Nowy post', new_post_path, class: "btn btn-sm my-a m-0"
+.container.text-center
+  h1 Tablica postów 
+  = link_to 'Nowy post', new_post_path, class: "btn btn-primary btn-sm " 
+  br/
+  br/
 
-- @posts.reverse_each do |post|
-    .card.mb-2  
-      .row.no-gutters
-        .col-md-3.my-auto
-          .card-body
-            p.card-text.font-weight-bold = User.find(post.author_id).email
-        .col-md-6
-          .card-body
-            p.card-text = post.post_content
-        .col-md-3.my-auto
-          .card-body.p-1.text-centera
-            = link_to 'Show', post, class: "btn btn-sm my-a my-sm mt-2"
-            - if (post.author_id == current_user.id)&&(can? :update, Post)
-              = link_to 'Edit', edit_post_path(post), class: "btn btn-sm my-a my-sm mt-2"
-              = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-sm my-a my-sm mt-2"
-            p.card-text.text-center
-              small.text-muted Created on 
-              small.text-muted = post.created_at
+
+
+  - @posts.reverse_each do |post|
+      .card.mb-2  
+        .row.no-gutters
+          .col-md-3.my-auto
+            .card-body
+              p.card-text.font-weight-bold = User.find(post.author_id).email
+          .col-md-6
+            .card-body
+              p.card-text = post.post_content
+          .col-md-3.my-auto
+            .card-body.p-1.text-centera
+              = link_to 'Show', post, class: "btn btn-primary btn-sm m-1 mt-2"
+              - if current_user
+                - if (post.author_id == current_user.id)&&(can? :update, Post)
+                = link_to 'Edit', edit_post_path(post), class: "btn btn-primary btn-sm m-1 mt-2"
+                = link_to 'Delete', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
+              p.card-text.text-center
+                small.text-muted Created on 
+                small.text-muted = post.created_at
  
 
 
-br

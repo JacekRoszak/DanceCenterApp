@@ -22,114 +22,11 @@
   margin-right: auto;
 }
 
-.form-control{
-  background: none !important;
-  border: 1px solid #888;
-  color: #888 !important;
+.btn-primary{
+  color: white !important;
 }
 
 body {
-    color: #888;
-  background-image: url("dark-honeycomb.png");
-
+    background-image: url("hexellence.png");
   }
-
-.card-title{
-  width: fit-content;
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-}
-  
-.card-body
-{
-  background: none;
-}
-
-.card{
-  background: none;
-  border: solid #888 1px;
-  border-radius: 10px;
-}
-
-.centered-box{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.my-card{
-  margin-left: auto;
-  margin-right: auto;
-  border: solid #888 1px;
-  border-radius: 10px;
-  width: fit-content;
-
-}
-
-.mybb{
-  width: 150px;
-  height: 120px;
-  text-align: center;
-  display: inline-block;
-}
-
-.test{
-  position: absolute;
-  z-index: -20;
-
-}
-
-
-.my-a {
-    position: relative;
-    display: inline-block;
-    width: 120px;
-    height: 50px;
-    text-align: center;
-    line-height: 40px;
-    background: #171515;
-    border-radius: 10px;
-    font-size: 14px;
-    color: #666;
-    transition: .5s;
-  }
-  
-.my-sm
-{
-  width: 60px;
-  height: 30px;
-  line-height: 20px;
-  font-size: 12px;
-  border-radius: 8px;
-  margin:  0px 5px;
-  display: inline-block;
-
-}
-
-.my-a:before {
-  content: '';
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  border-radius:10px;
-  background: #2973B8;
-  transition: .5s;
-  transform: scale(.9);
-  z-index: -1;
-  }
-  
-.my-a:hover:before {
-  transform: scale(1.2);
-  box-shadow: 0 0 15px #2973B8;
-  filter: blur(3px);  
-}
-  
-.my-a:hover {
-  color: #2973B8;
-  box-shadow: 0 0 15px #2973B8;
-  text-shadow: 0 0 15px #2973B8;
-  text-decoration: none;
-    }
 

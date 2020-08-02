@@ -1,29 +1,32 @@
-h1 Listing events
+.container-flex.text-center
+  h1 Tablica Imprez
+  br/
+  = link_to 'Nowa Impreza',  new_event_path, class: "btn btn-primary btn-sm " 
+  br/
+  br/
 
-table
-  thead
-    tr
-      th Event name
-      th Start date
-      th End date
-      th Description
-      th Owner
-      th
-      th
-      th
 
-  tbody
-    - @events.each do |event|
-      tr
-        td = event.event_name
-        td = event.start_date
-        td = event.end_date
-        td = event.description
-        td = event.owner_id
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Event', new_event_path
+  - @events.reverse_each do |event|
+      .card.mb-2  
+        .row.no-gutters
+          .col-md-2.my-auto
+            .card-body
+              p.card-text.font-weight-bold = event.event_name
+              p.card-text by #{User.find(event.owner_id).email}
+          .col-md-6
+            .card-body
+              p.card-text = event.description
+          .col-md-2
+            .card-body
+              p.card-text od #{event.start_date}
+              p.card-text do #{event.end_date}
+          .col-md-2.my-auto
+            .card-body.p-1.text-centera
+              = link_to 'Pokarz', event, class: "btn btn-primary btn-sm m-1 mt-2"
+              - if current_user
+                - if (event.owner_id == current_user.id)&&(can? :update, Event)
+                = link_to 'Edytuj',  edit_event_path(event), class: "btn btn-primary btn-sm m-1 mt-2"
+                = link_to 'Usuń', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
+              p.card-text.text-center
+                small.text-muted Created on 
+                small.text-muted = event.created_at
