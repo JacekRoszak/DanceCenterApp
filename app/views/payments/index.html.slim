@@ -1,25 +1,25 @@
-h1 Listing payments
+.container
+    .text-center
+      h1 Lista wpłat 
+      - if (current_user)&&(can? :create, Payment)
+        = link_to 'Nowa wpłata', new_payment_path, class: "btn btn-primary mt-1 mb-4" 
 
-table
-  thead
-    tr
-      th Amount
-      th User
-      th Option
-      th
-      th
-      th
-
-  tbody
-    - @payments.each do |payment|
-      tr
-        td = payment.amount
-        td = payment.user_id
-        td = payment.option_id
-        td = link_to 'Show', payment
-        td = link_to 'Edit', edit_payment_path(payment)
-        td = link_to 'Destroy', payment, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Payment', new_payment_path
+    - Event.all.reverse_each do |x|
+      - if (x.user_id == current_user.id)||(current_user.admin)
+        h3.mt-4.mb-2.text-center  = x.event_name
+        .card.mb-2.offset-md-1.col-sm-10.p-2  
+          - x.options.each do |y|
+            .row.text-center
+              .offset-md-4.col-sm-4
+                h5.m-2  = y.name
+            - y.payments.each do |z|
+                .row.no-gutters
+                  .col-md-9.p-1.d-flex
+                    .my-auto.ml-2.text-center
+                      p.m-0 #{z.created_at.to_date} -> id:#{z.id} - #{z.amount}zł - #{User.find(z.user_id).user_name} - #{User.find(z.user_id).email} 
+                  - if current_user.admin
+                    .col-md-3.my-auto
+                      .card-body.p-1.text-center
+                        = link_to 'Pokarz', y
+                        |  - #{link_to 'Edytuj', edit_option_path(y)}
+                        |  - #{link_to 'Usuń', y, data: { confirm: 'Are you sure?' }, method: :delete}

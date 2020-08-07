@@ -5,14 +5,18 @@
       ul
         - @payment.errors.full_messages.each do |message|
           li = message
-
-  .field
-    = f.label :amount
-    = f.number_field :amount
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .field
-    = f.label :option_id
-    = f.number_field :option_id
-  .actions = f.submit
+  .offset-md-4.col-sm-4
+      .card.my-5.pb-1.text-center
+        .card-body
+          ul.list-group.list-group-flush
+            li.list-group-item
+              = f.label "Kwota"
+              = f.number_field :amount
+            li.list-group-item
+              = f.label "E-mail"
+              = f.text_field :email
+            li.list-group-item
+              = f.label "Opcja"
+              = f.number_field :option_id
+            li.list-group-item
+              = f.submit "Zapisz", class: "btn btn-primary btn-sm"

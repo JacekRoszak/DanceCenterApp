@@ -8,12 +8,20 @@
             li.list-group-item 
               p.m-1 Gospodarz: 
               strong #{User.find(@event.user_id).user_name}
+            li.list-group-item
+              p.m-1 Instruktorzy:
+              - @event.contracts.map do |y|
+                strong.m-0 = User.find(y.user_id).user_name
+                br/
             li.list-group-item 
               p.m-1 Adress: 
               strong #{@event.adress}
             li.list-group-item 
                 | Limit osób:
                 strong #{@event.limit}
+            li.list-group-item 
+                | Biletów sprzedanych:
+                strong  0
             li.list-group-item 
               | Od: 
               strong #{@event.start_date}
@@ -25,13 +33,14 @@
               .text-left
                 = simple_format(@event.schedule)
             li.list-group-item
-              p.m-1 Instruktorzy:
-              - @event.contracts.map do |y|
-                strong.m-0 = User.find(y.user_id).user_name
-                br/
-              
-            li.list-group-item
-              = link_to 'Pokarz', @event, class: "btn btn-primary btn-sm m-1"
+              p.m-1 Opcje biletu:
+              .text-left
+                - @event.options.map do |y|
+                  strong #{y.number}. #{y.name} - #{y.amount} zł
+                  br/
+                  small = y.description
+                  br/
+            li.list-group-item.text-center
               - if current_user
                 - if (@event.user_id == current_user.id)&&(can? :update, Event)
                 = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-primary btn-sm m-1"

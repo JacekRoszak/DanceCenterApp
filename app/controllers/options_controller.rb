@@ -71,6 +71,6 @@ class OptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def option_params
-      params.require(:option).permit(:number, :description, :amount, :event_id)
+      params.require(:option).permit(:number, :description, :name, :amount, :event_id)
     end
 end

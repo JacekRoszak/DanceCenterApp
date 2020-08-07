@@ -26,6 +26,7 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @payment.user_id = User.find_by(email: payment_params[:email]).id 
 
     respond_to do |format|
       if @payment.save
@@ -70,6 +71,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:amount, :user_id, :option_id)
+      params.require(:payment).permit(:amount, :user_id, :email,  :option_id)
     end
 end

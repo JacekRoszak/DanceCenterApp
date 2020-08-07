@@ -10,7 +10,7 @@
     - @users.reverse_each do |user|
         .card.mb-2  
           .row.no-gutters
-            .col-md-1.small_profile_img style="background-image: url('assets/profile#{user.id.to_s}.jpg')" 
+            .col-md-1.small_profile_img style="background-image: url('#{asset_path("profile"+user.id.to_s+".jpg")}')" 
             .col-md-2.p-1.d-flex
               .my-auto
                 | #{user.id}. #{user.user_name}  

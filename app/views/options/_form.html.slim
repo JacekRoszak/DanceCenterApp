@@ -6,16 +6,26 @@
         - @option.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :number
-    = f.number_field :number
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :amount
-    = f.number_field :amount
-  .field
-    = f.label :event_id
-    = f.number_field :event_id
-  .actions = f.submit
+
+
+  .offset-md-3.col-sm-6
+      .card.my-5.pb-1.text-center
+        .card-body
+          ul.list-group.list-group-flush
+            li.list-group-item
+              p Opcja dla:
+              = f.select :event_id, Event.where(user_id: current_user.id).map { |u| [u.event_name, u.id] }, style: "width: 100%"  
+            li.list-group-item 
+              = f.label "Numer opcji:"
+              = f.number_field :number
+            li.list-group-item 
+              = f.label "Nazwa:"
+              = f.text_field :name
+            li.list-group-item 
+              = f.label "Cena:"
+              = f.number_field :amount
+            li.list-group-item 
+              = f.label :description
+              = f.text_area :description, style: "width: 100%"
+            li.list-group-item 
+              = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"

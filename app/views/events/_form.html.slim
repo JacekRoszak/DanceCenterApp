@@ -32,6 +32,8 @@
               = f.text_area :schedule, :rows => 10, style: "width:100%"
             li.list-group-item.pb-0
               = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
+              - if can? :read, Option
+                = link_to  "Opcje", options_path,  class: "btn btn-primary btn-sm" 
               br/
               small.text-muted Utworzono: #{@event.created_at}
     .col-sm-8 
