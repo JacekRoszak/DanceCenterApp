@@ -1,16 +1,12 @@
-
-
     = form_for @post do |f|
-      .form-group
+      .card-body
         - if @post.errors.any?
           #error_explanation
             h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
             ul
               - @post.errors.full_messages.each do |message|
                 li = message
-        
         = f.text_area :post_content,  class: "form-control mb-3"
-        
-        = f.submit "Zatwierdź", class: " my-a"
-
-        = button_to "Wróć", posts_path, class: "ml-4  my-a"
+      .card-footer 
+        = f.submit "Zatwierdź", class: "btn btn-primary btn-sm mr-3"
+        = link_to "Wróć", posts_path, class: "btn btn-primary btn-sm "

@@ -1,12 +1,13 @@
-.container-fluid
+.container-fluid.w-50
   .card.text-center
     .card-header
-      = User.find(@post.author_id).email
+      = User.find(@post.user_id).email
     .card-body
       .card-text = @post.post_content
       br/
-      = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-primary mr-4"
-      = link_to  "Wróc", posts_path,  class: "btn btn-primary"
+      - if current_user
+        - if (current_user.id == @post.user_id)
+          = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-primary mr-4"
     .card-footer 
       = @post.created_at
     

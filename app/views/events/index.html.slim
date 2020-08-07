@@ -1,32 +1,28 @@
-.container-flex.text-center
+.text-center
   h1 Tablica Imprez
   br/
-  = link_to 'Nowa Impreza',  new_event_path, class: "btn btn-primary btn-sm " 
-  br/
-  br/
+  - if current_user
+    - if (current_user.can_host)&&(can? :create, Event)
+      = link_to 'Nowa Impreza',  new_event_path, class: "btn btn-primary btn-sm " 
 
-
+.card-group.text-center
   - @events.reverse_each do |event|
-      .card.mb-2  
-        .row.no-gutters
-          .col-md-2.my-auto
-            .card-body
-              p.card-text.font-weight-bold = event.event_name
-              p.card-text by #{User.find(event.owner_id).email}
-          .col-md-6
-            .card-body
-              p.card-text = event.description
-          .col-md-2
-            .card-body
-              p.card-text od #{event.start_date}
-              p.card-text do #{event.end_date}
-          .col-md-2.my-auto
-            .card-body.p-1.text-centera
-              = link_to 'Pokarz', event, class: "btn btn-primary btn-sm m-1 mt-2"
-              - if current_user
-                - if (event.owner_id == current_user.id)&&(can? :update, Event)
-                = link_to 'Edytuj',  edit_event_path(event), class: "btn btn-primary btn-sm m-1 mt-2"
-                = link_to 'Usuń', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
-              p.card-text.text-center
-                small.text-muted Created on 
-                small.text-muted = event.created_at
+    .card.m-2.col-md-5.pb-1 
+      img.card-img-top.mt-3 src="assets/plakat#{event.id}.png" alt="Tu będzie mini plakat"
+      .card-body
+        ul.list-group.list-group-flush
+          li.list-group-item style= "height: 73px"
+            strong = event.event_name
+          li.list-group-item 
+            p.m-1 Gospodarz: 
+            strong #{User.find(event.user_id).user_name}
+          li.list-group-item Od: #{event.start_date}
+          li.list-group-item Do: #{event.end_date}
+          li.list-group-item
+            = link_to 'Pokarz', event, class: "btn btn-primary btn-sm m-1"
+            - if current_user
+              - if (event.user_id == current_user.id)&&(can? :update, Event)
+              = link_to 'Edytuj',  edit_event_path(event), class: "btn btn-primary btn-sm m-1"
+              = link_to 'Usuń', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"      
+            br/
+            small.text-muted Utworzono: #{event.created_at}

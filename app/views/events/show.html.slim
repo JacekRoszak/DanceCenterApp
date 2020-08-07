@@ -1,21 +1,48 @@
-p#notice = notice
+  .row
+    .col-sm-4
+      .card.m-2.pb-1.text-center
+        img.card-img-top.mt-0 src="#{asset_path("plakat"+@event.id.to_s+".png")}" alt="Tu będzie mini plakat"
 
-p
-  strong Event name:
-  = @event.event_name
-p
-  strong Start date:
-  = @event.start_date
-p
-  strong End date:
-  = @event.end_date
-p
-  strong Description:
-  = @event.description
-p
-
-=> link_to 'Edit', edit_event_path(@event)
-'|
-=< link_to 'Back', events_path
-
-
+        .card-body
+          ul.list-group.list-group-flush
+            li.list-group-item 
+              p.m-1 Gospodarz: 
+              strong #{User.find(@event.user_id).user_name}
+            li.list-group-item 
+              p.m-1 Adress: 
+              strong #{@event.adress}
+            li.list-group-item 
+                | Limit osób:
+                strong #{@event.limit}
+            li.list-group-item 
+              | Od: 
+              strong #{@event.start_date}
+            li.list-group-item 
+              | Do: 
+              strong #{@event.end_date}
+            li.list-group-item
+              p.m-1 Harmonogram:
+              .text-left
+                = simple_format(@event.schedule)
+            li.list-group-item
+              p.m-1 Instruktorzy:
+              - @event.contracts.map do |y|
+                strong.m-0 = User.find(y.user_id).user_name
+                br/
+              
+            li.list-group-item
+              = link_to 'Pokarz', @event, class: "btn btn-primary btn-sm m-1"
+              - if current_user
+                - if (@event.user_id == current_user.id)&&(can? :update, Event)
+                = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-primary btn-sm m-1"
+                = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"      
+              br/
+              small.text-muted Utworzono: #{@event.created_at}
+    .col-sm-8
+      .card.m-2.pb-1
+        .card-header.text-center.pt-3
+          h3 
+            strong = @event.event_name
+        .card-body
+          = simple_format(@event.description)
+    

@@ -12,21 +12,80 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker
  */
 
+ .small_profile_img{
+   background-repeat: no-repeat;
+   background-size: 60px;
+   background-position: center;
+ }
 
- 
+
+
 .my-nav
 {
   margin-left: auto;
   margin-right: auto;
+  
+}
+
+.logo{
+  width: 1140px;
+  height: 150px;
+  background-image: url('pasek.jpg');
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
 .btn-primary{
-  color: white !important;
+  color: WHITE !important;
 }
 
 body {
     background-image: url("hexellence.png");
   }
 
+
+
+.glowing-button {
+    background-color: #0275d8;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+  }
+  @-webkit-keyframes glowing {
+    0% { background-color: #0275d8; -webkit-box-shadow: 0 0 3px #0275d8; }
+    50% { background-color: #2497fa; -webkit-box-shadow: 0 0 30px #2497fa; }
+    100% { background-color: #0275d8; -webkit-box-shadow: 0 0 3px #0275d8; }
+  }
+  
+  @-moz-keyframes glowing {
+    0% { background-color: #0275d8; -moz-box-shadow: 0 0 3px #0275d8; }
+    50% { background-color: #2497fa; -moz-box-shadow: 0 0 30px #2497fa; }
+    100% { background-color: #0275d8; -moz-box-shadow: 0 0 3px #0275d8; }
+  }
+  
+  @-o-keyframes glowing {
+    0% { background-color: #0275d8; box-shadow: 0 0 3px #0275d8; }
+    50% { background-color: #2497fa; box-shadow: 0 0 30px #2497fa; }
+    100% { background-color: #0275d8; box-shadow: 0 0 3px #0275d8; }
+  }
+  
+  @keyframes glowing {
+    0% { background-color: #0275d8; box-shadow: 0 0 3px #0275d8; }
+    50% { background-color: #2497fa; box-shadow: 0 0 30px #2497fa; }
+    100% { background-color: #0275d8; box-shadow: 0 0 3px #0275d8; }
+  }

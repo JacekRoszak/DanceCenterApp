@@ -15,7 +15,7 @@ class Ability
           can :manage, :all
         else 
           can :read, Event
-          can :read, User
+          can :manage, User
           can :manage, Post
           can :create, Post
         end
