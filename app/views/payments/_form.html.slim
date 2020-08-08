@@ -15,8 +15,13 @@
             li.list-group-item
               = f.label "E-mail"
               = f.text_field :email
-            li.list-group-item
-              = f.label "Opcja"
-              = f.number_field :option_id
+            - if @payment.option_id != 0
+              li.list-group-item
+                  = f.label "Opcja"
+                  = f.select :option_id, Option.where(Event.find(event_id:).user_id = current_user_id).map { |u| [u.name, u.id] }, style: "width: 100%", disabled: :true
+            - else
+              li.list-group-item
+                = f.label "Opcja"
+                = f.select :option_id, Event.where(user_id: current_user_id).options.map { |u| [u.name, u.id] }, style: "width: 100%"  
             li.list-group-item
               = f.submit "Zapisz", class: "btn btn-primary btn-sm"

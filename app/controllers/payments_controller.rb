@@ -16,6 +16,7 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @payment.option_id = params[:option_id]
   end
 
   # GET /payments/1/edit
@@ -71,6 +72,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:amount, :user_id, :email,  :option_id)
+      params.require(:payment).permit(:amount, :user_id, :email, :option_id)
     end
 end

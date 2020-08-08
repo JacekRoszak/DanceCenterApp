@@ -5,10 +5,10 @@
       - if (current_user)&&(can? :create, Option)
         = link_to 'Nowa opcja', new_option_path, class: "btn btn-primary mt-1 mb-4" 
 
-    - Event.all.each do |x|
-      - if x.user_id == current_user.id
+    - Event.all.reverse_each do |x|
+      - if (x.user_id == current_user.id)||(current_user.admin)
         h3.mt-4.mb-2.text-center  = x.event_name
-        - x.options.each do |y|
+        - x.options.reverse_each do |y|
           .card.mb-2  
             .row.no-gutters
               .col-md-3.p-1.d-flex
@@ -24,5 +24,5 @@
                   = link_to 'Edytuj', edit_option_path(y), class: "btn btn-primary btn-sm m-1 mt-2"
                   = link_to 'Usuń', y, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
                   p.card-text.text-center
-                    small.text-muted #{y.created_at}
+                    small.text-muted id:#{y.id} date: #{y.created_at}
 

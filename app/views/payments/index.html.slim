@@ -2,7 +2,7 @@
     .text-center
       h1 Lista wpłat 
       - if (current_user)&&(can? :create, Payment)
-        = link_to 'Nowa wpłata', new_payment_path, class: "btn btn-primary mt-1 mb-4" 
+        = link_to 'Nowa wpłata', new_payment_path(:amount => nil, :user_id => nil, :email => nil,  :option_id => nil), class: "btn btn-primary mt-1 mb-4" 
 
     - Event.all.reverse_each do |x|
       - if (x.user_id == current_user.id)||(current_user.admin)
@@ -11,7 +11,7 @@
           - x.options.each do |y|
             .row.text-center
               .offset-md-4.col-sm-4
-                h5.m-2  = y.name
+                h5.m-2  #{y.name}  #{link_to '+', new_payment_path(:option_id => y.id), class: "btn btn-primary mt-1 mb-4"}
             - y.payments.each do |z|
                 .row.no-gutters
                   .col-md-9.p-1.d-flex
