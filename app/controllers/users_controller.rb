@@ -10,15 +10,19 @@ class UsersController < ApplicationController
   end
 
   def new
+    if @user.id = 1
+      @user.admin = true
+    end
+
   end
 
   def edit
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params, admin: :true)
 
-    if @user.id == 1
+    if @user.id = 1
       @user.admin = true
     end
     
