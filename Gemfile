@@ -56,3 +56,5 @@ gem 'devise'
 gem 'cancancan'
 gem 'jquery-rails'
 gem 'bootstrap-datepicker-rails'
+
+gem 'formtastic', '~> 3.0'

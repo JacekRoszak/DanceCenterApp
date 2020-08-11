@@ -1,32 +1,34 @@
   .row
     .col-sm-4
-      .card.m-2.pb-1.text-center
-        img.card-img-top.mt-0 src="#{asset_path("plakat"+@event.id.to_s+".png")}" alt="Tu będzie mini plakat"
+      .card.m-2.text-center
+        = image_tag("plakat#{@event.id.to_s}.png", alt: "Tu będzie mini plakat", class: 'card-img-top mt-0')
 
-        .card-body
+        .card-body.p-0
           ul.list-group.list-group-flush
-            li.list-group-item 
-              p.m-1 Gospodarz: 
-              strong #{User.find(@event.user_id).user_name}
-            li.list-group-item
+            li.list-group-item.color-primary
+              p.m-1 Gospodarz:
+              = link_to @event.user.user_name, @event.user, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
+            li.list-group-item.color-primary 
               p.m-1 Instruktorzy:
-              - @event.contracts.map do |y|
-                strong.m-0 = User.find(y.user_id).user_name
+              - @event.instructors.each do |instructor|
+                = link_to instructor.user_name, instructor, class: "btn btn-outline-primary btn-sm m-1"
                 br/
-            li.list-group-item 
-              p.m-1 Adress: 
+              - if (can? :create, Contract)&&(current_user.id == @event.user_id)
+                 = link_to  "Przypisz instruktora", new_contract_path, style: "color: white !important",  class: "btn btn-primary btn-sm m-1"
+            li.list-group-item
+              p.m-1 Adress:
               strong #{@event.adress}
-            li.list-group-item 
+            li.list-group-item
                 | Limit osób:
                 strong #{@event.limit}
-            li.list-group-item 
+            li.list-group-item
                 | Biletów sprzedanych:
                 strong  0
-            li.list-group-item 
-              | Od: 
+            li.list-group-item
+              | Od:
               strong #{@event.start_date}
-            li.list-group-item 
-              | Do: 
+            li.list-group-item
+              | Do:
               strong #{@event.end_date}
             li.list-group-item
               p.m-1 Harmonogram:
@@ -41,17 +43,18 @@
                   small = y.description
                   br/
             li.list-group-item.text-center
-              - if current_user
-                - if (@event.user_id == current_user.id)&&(can? :update, Event)
+              - if can? :update, Option
+                 = link_to  "Opcje", options_path,  class: "btn btn-primary btn-sm m-1"
+              - if can? :update, @event
                 = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-primary btn-sm m-1"
-                = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"      
+              - if can? :destroy, @event
+                = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"
               br/
               small.text-muted Utworzono: #{@event.created_at}
     .col-sm-8
       .card.m-2.pb-1
         .card-header.text-center.pt-3
-          h3 
+          h3
             strong = @event.event_name
         .card-body
           = simple_format(@event.description)
-    

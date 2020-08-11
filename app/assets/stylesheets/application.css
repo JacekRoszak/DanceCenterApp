@@ -21,15 +21,6 @@
    background-position: center;
  }
 
-
-
-.my-nav
-{
-  margin-left: auto;
-  margin-right: auto;
-  
-}
-
 .logo{
   width: 1140px;
   height: 150px;
@@ -41,6 +32,19 @@
 .btn-primary{
   color: WHITE !important;
 }
+
+.color-primary a:visited
+{
+  color: #0275d8 !important;
+}
+
+.color-primary a:hover
+{
+  color: WHITE !important;
+}
+
+
+
 
 body {
     background-image: url("hexellence.png");

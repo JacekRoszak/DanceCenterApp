@@ -1,26 +1,24 @@
 .container
-
     .text-center
-      h1 Lista opcji 
+      h1 Lista opcji
       - if (current_user)&&(can? :create, Option)
-        = link_to 'Nowa opcja', new_option_path, class: "btn btn-primary mt-1 mb-4" 
-
+        = link_to 'Nowa opcja', new_option_path, class: "btn btn-primary mt-1 mb-4"
     - Event.all.reverse_each do |x|
       - if (x.user_id == current_user.id)||(current_user.admin)
         h3.mt-4.mb-2.text-center  = x.event_name
         - x.options.reverse_each do |y|
-          .card.mb-2  
+          .card.mb-2
             .row.no-gutters
               .col-md-3.p-1.d-flex
                 .my-auto.ml-2
                   h5.m-0 #{y.number}. #{y.name} - #{y.amount} zł
               .col-md-6.p-1.d-flex
-                .my-auto 
+                .my-auto
                   = y.description
 
               .col-md-3.my-auto
                 .card-body.p-1.text-center
-                  = link_to 'Pokarz', y, class: "btn btn-primary btn-sm m-1 mt-2"
+                  = link_to 'Pokaż', y, class: "btn btn-primary btn-sm m-1 mt-2"
                   = link_to 'Edytuj', edit_option_path(y), class: "btn btn-primary btn-sm m-1 mt-2"
                   = link_to 'Usuń', y, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
                   p.card-text.text-center

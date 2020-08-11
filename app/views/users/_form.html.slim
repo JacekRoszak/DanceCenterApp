@@ -6,6 +6,8 @@
         - @user.errors.full_messages.each do |message|
           li = message
   .row
+    - if @user.zin == false
+      .offset-md-4
     .col-sm-4
       .card.m-2.text-center
         .card-body
@@ -16,21 +18,23 @@
             li.list-group-item
               = f.label "Adres e-mail"
               = f.text_field :email, style: "width:100%"
-            li.list-group-item
-              .row
-                .col-sm-4
-                  | Admin #{f.check_box :admin}
-                .col-sm-4
-                  | Zin #{f.check_box :zin}
-                .col-sm-4
-                  | Host #{f.check_box :can_host}
+            - if current_user.admin
+              li.list-group-item
+                .row
+                  .col-sm-4
+                    | Admin #{f.check_box :admin}
+                  .col-sm-4
+                    | Zin #{f.check_box :zin}
+                  .col-sm-4
+                    | Host #{f.check_box :can_host}
             li.list-group-item.pb-0
               = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
               br/
               small.text-muted Utworzono: #{@user.created_at}
-    .col-sm-8 
-      .card.m-2.pb-1 
-        .card-header
-          strong Opis imprezy
-        .card-body
-          = f.text_area :description, style: "width:100%; height: 610px"
+    - if @user.zin
+      .col-sm-8 
+        .card.m-2.pb-1 
+          .card-header
+            strong Opis:
+          .card-body
+            = f.text_area :description, style: "width:100%; height: 610px"

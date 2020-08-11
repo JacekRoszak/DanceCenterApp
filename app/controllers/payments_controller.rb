@@ -1,77 +1,69 @@
 class PaymentsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
-  # GET /payments
-  # GET /payments.json
   def index
     @payments = Payment.all
   end
 
-  # GET /payments/1
-  # GET /payments/1.json
   def show
   end
 
-  # GET /payments/new
   def new
-    @payment = Payment.new
-    @payment.option_id = params[:option_id]
+    load_event_and_option #ładujemy @event i @option z parametru
   end
 
-  # GET /payments/1/edit
   def edit
+    load_event_and_option
   end
 
-  # POST /payments
-  # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
-    @payment.user_id = User.find_by(email: payment_params[:email]).id 
 
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render :show, status: :created, location: @payment }
-      else
-        format.html { render :new }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    # Płatnik
+    user = User.find_by(email: payment_params[:email]) # jeżeli podanego e-mail nie ma w bazie
+    unless user                                        # znaczy, że nie ma użytkownika w bazie
+      temp_pass = SecureRandom.alphanumeric(10)        # więc bierzemy randomowe hasło
+      user = User.new(                                 # i go tworzymy
+        email: payment_params[:email], password: temp_pass, password_confirmation: temp_pass
+      )                                                # tworzymy nowego użytkownika tylko z podanego e-mail oraz wygenerowanego hasła
+      user.skip_confirmation!                          # użytkownik nie dostaje powiadomienia o założeniu konta
+      user.save!
+    end
+    @payment.user_id = user.id
+
+    if @payment.save
+      redirect_to payments_path, notice: 'Udło się wprowadzić wpłatę.'
+    else                                          
+      load_event_and_option   # jeżeli nie uda się zapisać wpłaty, ładujemy @event i @option z parametru i renderujemy view new
+      render :new
     end
   end
 
-  # PATCH/PUT /payments/1
-  # PATCH/PUT /payments/1.json
   def update
-    respond_to do |format|
-      if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @payment }
-      else
-        format.html { render :edit }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    if @payment.update(payment_params)
+      redirect_to @payment, notice: 'Udało się poprawić wpłatę.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /payments/1
-  # DELETE /payments/1.json
   def destroy
     @payment.destroy
-    respond_to do |format|
-      format.html { redirect_to payments_url, notice: 'Payment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to payments_url, notice: 'Udało się usunąć wpłatę.'
+  end
+
+  def refund
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_payment
-      @payment = Payment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def payment_params
-      params.require(:payment).permit(:amount, :user_id, :email, :option_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def payment_params
+    params.require(:payment).permit(:amount, :user_id, :email, :option_id)
+  end
+
+  def load_event_and_option         # przekazujemy poprzez parametr wybór eventu i opcji
+    @event = Event.find_by(id: params[:event_id])
+    @option = Option.find_by(id: params[:option_id])
+  end
 end

@@ -1,4 +1,4 @@
 class Contract < ApplicationRecord
-    has_one :event
-    has_one :user
+  belongs_to :event
+  belongs_to :user
 end

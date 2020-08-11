@@ -1,13 +1,18 @@
 .container-fluid.w-50
   .card.text-center
-    .card-header
-      = User.find(@post.user_id).email
+    - if @post.user
+      .card-header
+        - if @post.user.user_name == ''        
+          | Autor postu: #{@post.user.email.split('@').first}
+        - else
+          | Autorem postu: #{@post.user.user_name}
+    - else
+      .card-header = "Post Automatyczny"
     .card-body
       .card-text = @post.post_content
-      br/
-      - if current_user
-        - if (current_user.id == @post.user_id)
-          = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-primary mr-4"
-    .card-footer 
+      br
+      - if can? :edit, @post
+        = link_to 'Edytuj', edit_post_path(@post), class: "btn btn-primary mr-4"
+    .card-footer
+      | Utworzono: 
       = @post.created_at
-    

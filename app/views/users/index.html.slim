@@ -1,40 +1,39 @@
-- if current_user.admin
-  .container
-    .text-center
-      h1 Lista użytkowników 
-      - if (current_user)&&(can? :create, User)
-        - if current_user.admin
-          = link_to 'Nowy użytkownik', new_user_path, class: "btn btn-primary mt-1" 
-      br/
-      br/
-    - @users.reverse_each do |user|
-        .card.mb-2  
+.container
+  .text-center
+    h1 Lista użytkowników
+    - if (can? :create, User)
+      = link_to 'Nowy użytkownik', new_user_path, class: "btn btn-primary mt-1 mb-3"
+  - @users.reverse_each do |user|
+      - if (((current_user.zin)||(current_user.can_host))&&((user.zin)||(user.can_host))||current_user.admin)
+        .card.mb-2
           .row.no-gutters
-            .col-md-1.small_profile_img style="background-image: url('#{asset_path("profile"+user.id.to_s+".jpg")}')" 
+            .col-md-1.small_profile_img
+              = image_tag("profile"+user.id.to_s+".jpg", height: '60', width: '60', alt: 'profile1.jpg')
             .col-md-2.p-1.d-flex
               .my-auto
-                | #{user.id}. #{user.user_name}  
+                | #{user.user_name}
             .col-md-3.p-1.d-flex
-              .my-auto 
-                = user.email 
+              .my-auto
+                = user.email
             .col-md-1.p-1.d-flex
-              .my-auto 
+              .my-auto
                 - if user.can_host
                   strong Host&#10004;
             .col-md-1.p-1.d-flex
-              .my-auto 
-               - if user.zin
+              .my-auto
+                - if user.zin
                   strong Zin&#10004;
             .col-md-1.p-1.d-flex
-              .my-auto 
+              .my-auto
                 - if user.admin
                   strong Admin&#10004;
-
             .col-md-3.my-auto
               .card-body.p-1.text-center
-                = link_to 'Pokarz', user, class: "btn btn-primary btn-sm m-1 mt-2"
-                = link_to 'Edytuj', edit_user_path(user), class: "btn btn-primary btn-sm m-1 mt-2"
-                = link_to 'Usuń', user, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
+                = link_to 'Pokaż', user, class: "btn btn-primary btn-sm m-1 mt-2"
+                - if can? :update, user
+                  = link_to 'Edytuj', edit_user_path(user), class: "btn btn-primary btn-sm m-1 mt-2"
+                - if can? :destroy, user
+                  = link_to 'Usuń', user, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
                 p.card-text.text-center
-                  small.text-muted #{user.created_at}
+                  small.text-muted id: #{user.id} - #{user.created_at}
 
