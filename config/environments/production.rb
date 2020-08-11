@@ -40,12 +40,12 @@ Rails.application.configure do
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => 'apikey',
-    :password => ENV['SENDGRID_API_KEY'],
-    :address => 'smtp.sendgrid.net',
-    :port => ENV['SENDGRID_PORT'],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    :user_name => '090523769a29bd',
+    :password => '941078efb57de4',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
   }
 
 
