@@ -10,7 +10,8 @@
             .col-md-1.small_profile_img
               - if user.picture == nil
                 = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", height: '70px', width: '70px', class: "mx-auto"
-
+              - else 
+                = image_tag  user.picture, height: '70px', width: '70px', class: "mx-auto"
             .col-md-2.p-1.d-flex
               .my-auto
                 | #{user.user_name}
