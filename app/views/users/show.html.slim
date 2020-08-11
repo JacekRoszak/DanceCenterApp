@@ -1,12 +1,13 @@
+.container
   .row
     - if @user.zin == false
       .offset-md-4
     .col-sm-5
       .card.m-2.pb-1.text-center
-        img.card-img-top.mt-3 src="#{asset_path("profile"+@user.id.to_s+".jpg")}"
+        - if @user.picture == nil
+          = image_tag  "profile.jpg", class: "profile_img" 
         .card-body
           ul.list-group.list-group-flush
-            li.list-group-item 
             li.list-group-item 
               | E-mail: 
               strong = @user.email
@@ -31,11 +32,12 @@
                 - @user.events.map do |y|
                   = link_to y.event_name, y, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
                   br/ 
-            li.list-group-item.color-primary
-              p.m-1 Bierze udział w:
-              - @user.payments.map do |y|
-                = link_to y.event.event_name, y.event, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
-                br/ 
+            - if (@user.payments.any?)
+              li.list-group-item.color-primary
+                p.m-1 Bierze udział w:
+                - @user.payments.map do |y|
+                  = link_to y.event.event_name, y.event, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
+                  br/ 
             li.list-group-item 
               | Konto utworzone: 
               strong #{@user.created_at}

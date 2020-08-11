@@ -1,7 +1,8 @@
   .row
     .col-sm-4
       .card.m-2.text-center
-        = image_tag("plakat#{@event.id.to_s}.png", alt: "Tu będzie mini plakat", class: 'card-img-top mt-0')
+        - if @event.picture == nil
+          = image_tag  "profile.jpg", height: '320px', width: '320px', class: "mx-auto"
 
         .card-body.p-0
           ul.list-group.list-group-flush

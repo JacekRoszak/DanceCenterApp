@@ -8,7 +8,9 @@
         .card.mb-2
           .row.no-gutters
             .col-md-1.small_profile_img
-              = image_tag("profile"+user.id.to_s+".jpg", height: '60', width: '60', alt: 'profile1.jpg')
+              - if user.picture == nil
+                = image_tag  "profile.jpg", height: '65px', width: '65px'
+
             .col-md-2.p-1.d-flex
               .my-auto
                 | #{user.user_name}
