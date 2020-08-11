@@ -20,13 +20,13 @@
                   |   Instruktor&#10004; 
                 - if @user.can_host
                   |   Organizator&#10004; 
-            - if @user.zin
+            - if (@user.zin)&&(@user.contracts.any?)
               li.list-group-item.color-primary
                 p.m-1 Jako prezenter:
                 - @user.contracts.map do |y|
                   = link_to y.event.event_name, y.event, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
                   br/ 
-            - if @user.can_host
+            - if (@user.can_host)&&(@user.events.any?)
               li.list-group-item.color-primary 
                 p.m-1 Organizuje:
                 - @user.events.map do |y|
