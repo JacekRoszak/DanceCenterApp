@@ -20,7 +20,8 @@ class UsersController < ApplicationController
 
     if @user.id == 1
       @user.admin = true
-
+    end
+    
     if @user.save
       redirect_to @user
     else
