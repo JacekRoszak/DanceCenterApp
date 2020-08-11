@@ -31,7 +31,7 @@
 .logo{
   width: 1140px;
   height: 150px;
-  background-image: asset_url('pasek.jpg');
+  background-image: url('https://www.dropbox.com/s/kiyvxazgzcekadu/pasek.jpg?raw=1');
   border-radius: 12px;
   margin-bottom: 10px;
 }
@@ -50,12 +50,9 @@
   color: WHITE !important;
 }
 
-
 body {
-    background-image: asset_url("hexellence.png");
+    background-image: url("https://www.dropbox.com/s/lijg6gfxif9apza/hexellence.png?raw=1");
   }
-
-
 
 .glowing-button {
     background-color: #0275d8;
