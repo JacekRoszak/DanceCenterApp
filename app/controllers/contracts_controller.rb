@@ -26,7 +26,7 @@ class ContractsController < ApplicationController
 
   def update
     if @contract.update(contract_params)
-      redirect_to @contract
+      redirect_to contracts_path
     else
       frender :edit 
     end
