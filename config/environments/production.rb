@@ -35,6 +35,20 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
+  config.action_mailer.default_url_options = {
+    host: 'dance-center-app.herokuapp.com'
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API_KEY'],
+    :address => 'smtp.sendgrid.net',
+    :port => ENV['SENDGRID_PORT'],
+    :authentication => :plain,
+    :enable_starttls_auto: true
+  }
+
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
