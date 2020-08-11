@@ -10,10 +10,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    if @user.id = 1
-      @user.admin = true
-    end
-
   end
 
   def edit
@@ -22,10 +18,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params, admin: :true)
 
-    if @user.id = 1
-      @user.admin = true
-    end
-    
     if @user.save
       redirect_to @user
     else

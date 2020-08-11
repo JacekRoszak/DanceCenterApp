@@ -57,3 +57,5 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'formtastic', '~> 3.0'
 gem 'pg'
+
+gem 'sendgrid-ruby'
