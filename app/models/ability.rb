@@ -21,6 +21,7 @@ class Ability
       end
       if (user.zin)||(user.can_host)
         can :read, User
+        can :manage, Option
       end
       if user.can_host
         can :manage, Contract

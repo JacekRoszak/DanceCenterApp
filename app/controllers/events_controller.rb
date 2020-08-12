@@ -27,7 +27,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to events_path
     else
       render :edit 
     end
@@ -40,6 +40,6 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:event_name, :start_date, :schedule, :limit, :adress, :start_time, :end_date, :end_time, :description)
+      params.require(:event).permit(:event_name, :start_date, :schedule, :limit, :adress, :start_time, :end_date, :end_time, :description, :picture)
     end
 end

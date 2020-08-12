@@ -2,7 +2,7 @@
   .row
     .col-sm-4
       .card.m-2.text-center
-        - if @event.picture == nil
+        - if @event.picture == ""
           = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
         - else
           = image_tag  @event.picture, width: '100%', class: "mx-auto"
@@ -46,8 +46,8 @@
                   small = y.description
                   br/
             li.list-group-item.text-center
-              - if can? :update, Option
-                 = link_to  "Opcje", options_path,  class: "btn btn-primary btn-sm m-1"
+              - if (can? :update, Option)&&(current_user.id == @event.user_id)
+                 = link_to  "Opcje", new_option_path(event_id: @event.id),  class: "btn btn-primary btn-sm m-1"
               - if can? :update, @event
                 = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-primary btn-sm m-1"
               - if can? :destroy, @event

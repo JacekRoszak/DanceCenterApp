@@ -10,6 +10,10 @@ class OptionsController < ApplicationController
   end
 
   def new
+    @event = Event.find_by(id: params[:event_id])
+    if !(@event)
+      @event = Event.first
+    end
   end
 
   def edit

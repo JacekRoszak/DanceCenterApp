@@ -14,10 +14,10 @@
           ul.list-group.list-group-flush
             li.list-group-item
               p Opcja dla:
-              = f.select :event_id, Event.where(user_id: current_user.id).map { |u| [u.event_name, u.id] }, style: "width: 100%"  
+              = f.select :event_id, options_for_select(Event.where(user_id: current_user.id).map { |u| [u.event_name, u.id] }, :selected => @event.id), style: "width: 100%"   
             li.list-group-item 
               = f.label "Numer opcji:"
-              = f.number_field :number
+              = f.number_field :number, value: @event.options.count+1
             li.list-group-item 
               = f.label "Nazwa:"
               = f.text_field :name

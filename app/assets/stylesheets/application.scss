@@ -31,7 +31,7 @@
 .logo{
   width: 1140px;
   height: 150px;
-  background-image: url('https://www.dropbox.com/s/kiyvxazgzcekadu/pasek.jpg?raw=1');
+  background-image: asset_url('pasek.jpg');
   border-radius: 12px;
   margin-bottom: 10px;
 }
@@ -51,7 +51,7 @@
 }
 
 body {
-    background-image: url("https://www.dropbox.com/s/lijg6gfxif9apza/hexellence.png?raw=1");
+    background-image: asset_url("hexellence.png");
   }
 
 .glowing-button {
