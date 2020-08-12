@@ -24,7 +24,7 @@
               li.list-group-item Do: #{event.end_date}
               li.list-group-item
                 = link_to 'Pokaż', event, class: "btn btn-primary btn-sm m-1"
-                - if can? :read, event
+                - if (can? :read, event)&&(current_user)
                   - if (event.user_id == current_user.id)&&(can? :update, Event)
                   - if can? :update, event
                     = link_to 'Edytuj',  edit_event_path(event), class: "btn btn-primary btn-sm m-1"
