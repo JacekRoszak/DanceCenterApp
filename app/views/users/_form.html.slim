@@ -22,7 +22,7 @@
               li.list-group-item
                 = f.label "Link do zdjęcia"
                 = f.text_field :picture, style: "width:100%"
-              - if !(@user) 
+              - if (@user.email == "")||(@user.email == nil)
                 li.list-group-item
                   = f.label "Hasło"
                   = f.password_field :password, style: "width:100%"
