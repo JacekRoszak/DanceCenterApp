@@ -12,7 +12,7 @@ class OptionsController < ApplicationController
   def new
     @event = Event.find_by(id: params[:event_id])
     if !(@event)
-      @event = Event.first
+      @event = Event.last
     end
   end
 
@@ -22,7 +22,7 @@ class OptionsController < ApplicationController
   def create
     @option = Option.new(option_params)
     if @option.save
-      redirect_to options_path
+      redirect_to @option.event
     else
       render :new 
     end

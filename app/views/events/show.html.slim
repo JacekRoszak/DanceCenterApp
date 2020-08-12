@@ -2,10 +2,8 @@
   .row
     .col-sm-4
       .card.m-2.text-center
-        - if (@event.picture == "")||(@event.picture == nil)
-          = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
-        - else
-          = image_tag  @event.picture, width: '100%', class: "mx-auto"
+        h5.mt-3
+            strong = @event.event_name
         .card-body.p-0
           ul.list-group.list-group-flush
             li.list-group-item.color-primary
@@ -56,8 +54,10 @@
               small.text-muted Utworzono: #{@event.created_at}
     .col-sm-8
       .card.m-2.pb-1
-        .card-header.text-center.pt-3
-          h3
-            strong = @event.event_name
+        .card-header.text-center.p-0
+          - if (@event.picture == "")||(@event.picture == nil)
+            = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
+          - else
+            = image_tag  @event.picture, width: '100%', class: "mx-auto"
         .card-body.text-left
           = simple_format(@event.description)
