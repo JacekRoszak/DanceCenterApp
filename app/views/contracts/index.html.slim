@@ -8,7 +8,7 @@
       - if (current_user.id == event.user_id)||(current_user.admin)
           - if (event.start_date < DateTime.now)
             .mt-2.mb-1.h4.text-center = event.event_name
-            .card.mb-5.col-sm-4.offset-md-4.bg-light.text-muted
+            .card.mb-5.col-sm-4.offset-md-4.border-0.text-dark.bg-light
               - event.contracts.reverse_each do |cont|
                 .row.no-gutters
                   .col-md-10.p-1.d-flex
@@ -20,7 +20,7 @@
                       = link_to 'Usuń', cont, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
           - else
             .mt-2.mb-1.h4.text-center = event.event_name
-            .card.mb-5.col-sm-4.offset-md-4
+            .card.mb-5.col-sm-4.offset-md-4.border-0.text-dark.bg-light
               - event.contracts.reverse_each do |cont|
                 .row.no-gutters
                   .col-md-10.p-1.d-flex

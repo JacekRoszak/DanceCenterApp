@@ -5,7 +5,7 @@
     - Event.all.reverse_each do |x|
       - if (x.user_id == current_user.id)||(current_user.admin)
         h3.mt-4.mb-2.text-center  = x.event_name
-        .card.mb-2.offset-md-1.col-sm-10.p-2
+        .card.mb-2.offset-md-1.col-sm-10.p-2.border-0.text-dark.bg-light
           - x.options.each do |o|
             .row.text-center
               .offset-md-4.col-sm-4
@@ -16,9 +16,9 @@
                     .my-auto.ml-2.text-center
                       p.m-0 #{p.created_at.to_date} -> id:#{p.id} - #{p.amount}zł - #{User.find(p.user_id).user_name} - #{User.find(p.user_id).email}
                   - if current_user.admin
-                    .col-md-3.my-auto
-                      .card-body.p-1.text-center
-                        = link_to 'Pokaż', p
-                            /przy wybraniu EDIT z indexu, podajemy przez parametr tylko event_id, by opcja była do wybrania na nowo
-                        |  - #{link_to 'Edytuj', edit_payment_path(p, event_id: o.event.id)} 
-                        |  - #{link_to 'Usuń', p, data: { confirm: 'Are you sure?' }, method: :delete}
+                    .col-md-3.my-auto.p-1.text-center.border-0.text-dark.bg-light
+                      = link_to 'Edytuj ', edit_payment_path(p, event_id: o.event.id)
+                      = link_to 'Usuń', p, data: { confirm: 'Are you sure?' }, method: :delete 
+
+
+/ list item!!!!

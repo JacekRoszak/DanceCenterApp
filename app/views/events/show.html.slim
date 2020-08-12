@@ -1,41 +1,41 @@
 .container
   .row
     .col-sm-4
-      .card.m-2.text-center
+      .card.m-2.text-center.border-0.text-dark.bg-light
         h5.mt-3
             strong = @event.event_name
-        .card-body.p-0
+        .card-body.p-0.border-0.text-dark.bg-light
           ul.list-group.list-group-flush
-            li.list-group-item.color-primary
+            li.list-group-item.color-primary.bg-light
               p.m-1 Gospodarz:
               = link_to @event.user.user_name, @event.user, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
-            li.list-group-item.color-primary 
+            li.list-group-item.color-primary.bg-light 
               p.m-1 Instruktorzy:
               - @event.instructors.each do |instructor|
                 = link_to instructor.user_name, instructor, class: "btn btn-outline-primary btn-sm m-1"
                 br/
               - if (can? :create, Contract)&&(current_user.id == @event.user_id)
                  = link_to  "Przypisz instruktora", new_contract_path, style: "color: white !important",  class: "btn btn-primary btn-sm m-1"
-            li.list-group-item
+            li.list-group-item.bg-light
               p.m-1 Adress:
               strong #{@event.adress}
-            li.list-group-item
+            li.list-group-item.bg-light
                 | Limit osób:
                 strong #{@event.limit}
-            li.list-group-item
+            li.list-group-item.bg-light
                 | Biletów sprzedanych:
                 strong  0
-            li.list-group-item
+            li.list-group-item.bg-light
               | Od:
               strong #{@event.start_date}
-            li.list-group-item
+            li.list-group-item.bg-light
               | Do:
               strong #{@event.end_date}
-            li.list-group-item
+            li.list-group-item.bg-light
               p.m-1 Harmonogram:
               .text-left
                 = simple_format(@event.schedule)
-            li.list-group-item
+            li.list-group-item.bg-light
               p.m-1 Opcje biletu:
               .text-left
                 - @event.options.map do |y|
@@ -43,7 +43,7 @@
                   br/
                   small = y.description
                   br/
-            li.list-group-item.text-center
+            li.list-group-item.text-center.bg-light
               - if (can? :update, Option)&&(current_user.id == @event.user_id)
                  = link_to  "Opcje", new_option_path(event_id: @event.id),  class: "btn btn-primary btn-sm m-1"
               - if can? :update, @event
@@ -53,7 +53,7 @@
               br/
               small.text-muted Utworzono: #{@event.created_at}
     .col-sm-8
-      .card.m-2.pb-1
+      .card.m-2.pb-1.border-0.text-dark.bg-light
         .card-header.text-center.p-0
           - if (@event.picture == "")||(@event.picture == nil)
             = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"

@@ -1,21 +1,21 @@
 .offset-md-4.col-sm-4
-      .card.my-5.pb-1.text-center
-        .card-body
+      .card.my-5.pb-1.text-center.border-0.text-dark.bg-light
+        .card-body.border-0.text-dark.bg-light
           ul.list-group.list-group-flush
-            li.list-group-item
-              p Opcja dla: 
+            li.list-group-item.bg-light
+              h4.mb-3 Opcja dla: 
               strong = Event.find(@option.event_id).event_name
-            li.list-group-item 
+            li.list-group-item.bg-light
               | Numer: #{@option.number}
-            li.list-group-item 
+            li.list-group-item.bg-light
               | Nazwa: #{@option.name}
-            li.list-group-item 
+            li.list-group-item.bg-light 
               | Cena: #{@option.amount}
-            li.list-group-item 
+            li.list-group-item.bg-light 
               p.m-1 = @option.description
-            li.list-group-item 
+            li.list-group-item.bg-light 
               p Opcja utworzona: 
               | #{@option.created_at}
-            - if current_user.id == Event.find(@option.event_id).user_id
-              li.list-group-item 
+            - if current_user.id == @option.event.user_id
+              li.list-group-item.bg-light 
                 = link_to 'Edit', edit_option_path(@option), class: "btn btn-primary btn-sm m-1"

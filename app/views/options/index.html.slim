@@ -7,7 +7,7 @@
       - if (x.user_id == current_user.id)||(current_user.admin)
         h3.mt-4.mb-2.text-center  = x.event_name
         - x.options.reverse_each do |y|
-          .card.mb-2
+          .card.mb-2.border-0.text-dark.bg-light
             .row.no-gutters
               .col-md-3.p-1.d-flex
                 .my-auto.ml-2
@@ -17,7 +17,7 @@
                   = y.description
 
               .col-md-3.my-auto
-                .card-body.p-1.text-center
+                .card-body.p-1.text-center.border-0.text-dark.bg-light
                   = link_to 'Pokaż', y, class: "btn btn-primary btn-sm m-1 mt-2"
                   = link_to 'Edytuj', edit_option_path(y), class: "btn btn-primary btn-sm m-1 mt-2"
                   = link_to 'Usuń', y, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"

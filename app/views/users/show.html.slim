@@ -3,18 +3,18 @@
     - if @user.zin == false
       .offset-md-4
     .col-sm-5
-      .card.m-2.pb-1.text-center
+      .card.m-2.pb-1.text-center.border-0.text-dark.bg-light
         - if (@user.picture == "")||(@user.picture == nil)
           = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
         - else
           = image_tag  @user.picture, width: '100%', class: "mx-auto"
         .card-body
           ul.list-group.list-group-flush
-            li.list-group-item 
+            li.list-group-item.bg-light 
               | E-mail: 
               strong = @user.email
             - if (@user.zin||@user.can_host||@user.admin)
-              li.list-group-item 
+              li.list-group-item.bg-light 
                 p.m-1 Uprawnienia: 
                 - if @user.admin 
                   | Administrator&#10004; 
@@ -23,34 +23,34 @@
                 - if @user.can_host
                   |   Organizator&#10004; 
             - if (@user.zin)&&(@user.contracts.any?)
-              li.list-group-item.color-primary
+              li.list-group-item.color-primary.bg-light
                 p.m-1 Jako prezenter:
                 - @user.contracts.map do |y|
                   = link_to y.event.event_name, y.event, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
                   br/ 
             - if (@user.can_host)&&(@user.events.any?)
-              li.list-group-item.color-primary 
+              li.list-group-item.color-primary.bg-light 
                 p.m-1 Organizuje:
                 - @user.events.map do |y|
                   = link_to y.event_name, y, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
                   br/ 
             - if (@user.payments.any?)
-              li.list-group-item.color-primary
+              li.list-group-item.color-primary.bg-light
                 p.m-1 Bierze udział w:
                 - @user.payments.map do |y|
                   = link_to y.event.event_name, y.event, style: "color: #0275d8", class: "btn btn-outline-primary btn-sm m-1"
                   br/ 
-            li.list-group-item 
+            li.list-group-item.bg-light 
               | Konto utworzone: 
               strong #{@user.created_at}
             - if can? :update, @user
-              li.list-group-item 
+              li.list-group-item.bg-light 
                 = link_to 'Edytuj', edit_user_path(@user), class: "btn btn-primary btn-sm m-1"
     - if @user.zin
       .col-sm-7
-        .card.m-2.pb-1
+        .card.m-2.pb-1.border-0.text-dark.bg-light
           .card-header.text-center.p-2
             h3.m-0 
               strong = @user.user_name
-          .card-body
+          .card-body.bg-light
             = simple_format(@user.description)

@@ -18,7 +18,7 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(contract_params)
     if @contract.save
-      redirect_to @contract, notice: 'Dodano instruktora do imprezy.' 
+      redirect_to contracts_path, notice: 'Dodano instruktora do imprezy.' 
     else
       render :new 
     end
