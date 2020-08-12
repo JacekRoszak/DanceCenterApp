@@ -20,8 +20,12 @@
                 = f.label "Adres e-mail"
                 = f.text_field :email, style: "width:100%"
               li.list-group-item
-                = f.label "Hasło"
-                = f.password_field :password, style: "width:100%"
+                = f.label "Link do zdjęcia"
+                = f.text_field :picture, style: "width:100%"
+              - if !(@user) 
+                li.list-group-item
+                  = f.label "Hasło"
+                  = f.password_field :password, style: "width:100%"
               - if current_user.admin
                 li.list-group-item
                   .row
@@ -33,6 +37,7 @@
                       | Host #{f.check_box :can_host}
               li.list-group-item.pb-0
                 = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
+                = link_to "Zmień hasło",edit_user_registration_path, class: "btn btn-primary btn-sm m-1"
                 br/
                 small.text-muted Utworzono: #{@user.created_at}
       - if @user.zin

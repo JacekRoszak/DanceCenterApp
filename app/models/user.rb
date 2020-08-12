@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :contracts
-  has_many :payments
+  has_many :contracts     # dla instruktorów
+  has_many :payments      # dla uczestników
   has_many :events        # dla organizatorów
   has_many :posts
 
