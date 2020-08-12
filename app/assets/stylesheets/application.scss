@@ -15,6 +15,10 @@
  *= require bootstrap-datepicker
  */
 
+  .bg-light{
+    background-color: none !important;
+}
+
  .profile_img{
    height: 320px;
    width: 320px;
@@ -31,9 +35,10 @@
 .logo{
   width: 1140px;
   height: 150px;
-  background-image: asset_url('pasek.jpg');
+  background-image: asset_url('shakeshacklogo.png');
   border-radius: 12px;
   margin-bottom: 10px;
+  border-style: none;
 }
 
 .btn-primary{
