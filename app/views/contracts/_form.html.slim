@@ -5,6 +5,7 @@
       ul
         - @contract.errors.full_messages.each do |message|
           li = message
+
   .offset-md-4.col-sm-4
       .card.my-5.pb-1.text-center.text-black.shadow.rounded
         .card-body
@@ -15,8 +16,14 @@
             li.list-group-item
               = f.label "Impreza"
               - if current_user.admin 
-                = f.select :event_id, Event.all.map { |o| [o.event_name, o.id] }, style: "width: 100%"  
+                - if @event
+                  = f.select :event_id, options_for_select(Event.all.map { |o| [o.event_name, o.id] }, :selected => @event.id), style: "width: 100%"  
+                - else
+                  = f.select :event_id, Event.all.map { |o| [o.event_name, o.id] }, style: "width: 100%"  
               - else
-                = f.select :event_id, current_user.events.map { |o| [o.event_name, o.id] }, style: "width: 100%"
+                - if @event
+                  = f.select :event_id, options_for_select(current_user.events.map { |o| [o.event_name, o.id] }, :selected => @event.id), style: "width: 100%"  
+                - else
+                  = f.select :event_id, current_user.events.map { |o| [o.event_name, o.id] }, style: "width: 100%"  
             li.list-group-item
               = f.submit "Zapisz", class: "btn btn-primary btn-sm"

@@ -8,8 +8,8 @@
   .card.text-black.shadow.rounded.p-2
       - @posts.reverse_each do |post|
         .row.no-gutters
-            .col-md-9.p-1.d-flex 
-              .my-auto
+            .col-md-9.p-1.d-flex.text-left 
+              .my-auto.text-left
                 - if !post.user
                   strong ShakeShack 
                   | ~ #{post.post_content}
@@ -17,13 +17,6 @@
                   div style="color: #{post.user.post_color}"
                     strong = post.user.user_name
                     |  ~ #{post.post_content}
-            - if !current_user
-              .offset-md-1
-            .col-md-2.my-auto
-              .text-right
-                small.text-muted #{post.created_at.to_s.split(" ")[0]}
-                |  
-                small.text-muted #{post.created_at.to_s.split(" ")[1]}
             - if current_user
               .col-md-1.my-auto
                 .card-body.p-1.text-right
@@ -32,6 +25,11 @@
                   |  
                   - if can? :destroy, post
                     = link_to 'Usuń', post, data: { confirm: 'Are you sure?' }, method: :delete
+            .col-md-2.my-auto
+              .text-right
+                small.text-muted #{post.created_at.to_s.split(" ")[0]}
+                |  
+                small.text-muted #{post.created_at.to_s.split(" ")[1]}
 
 
 

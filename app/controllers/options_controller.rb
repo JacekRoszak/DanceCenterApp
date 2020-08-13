@@ -17,7 +17,6 @@ class OptionsController < ApplicationController
   end
 
   def edit
-      @event == nil
   end
 
   def create

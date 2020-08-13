@@ -10,6 +10,10 @@ class ContractsController < ApplicationController
   end
 
   def new
+    @event = Event.find_by(id: params[:event_id])
+    if !(@event)
+      @event = Event.last
+    end
   end
 
   def edit
