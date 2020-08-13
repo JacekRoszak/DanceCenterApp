@@ -15,9 +15,6 @@
  *= require bootstrap-datepicker
  */
 
-  .transp{
-    background-image: asset_url("wool.png") !important;
-}
 
  .profile_img{
    height: 320px;
@@ -36,6 +33,13 @@
   width: 1140px;
   height: 150px;
   background-image: asset_url('pasek.jpg');
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border-style: none;
+}
+
+.logo-sm{
+  width: auto;
   border-radius: 12px;
   margin-bottom: 10px;
   border-style: none;
