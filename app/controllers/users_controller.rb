@@ -17,8 +17,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
+      Payment.all.each do |p|
+        if p.email == @user.email
+          p.update(user_id: @user.id)
+        end
+      end
       redirect_to @user
     else
       render :new 

@@ -12,7 +12,9 @@
                 .row.no-gutters
                   .col-md-9.p-1.d-flex
                     .my-auto.ml-2.text-center
-                      p.m-0 #{p.created_at.to_date} -> id:#{p.id} - #{p.amount}zł - #{User.find(p.user_id).user_name} - #{User.find(p.user_id).email}
+                      p.m-0 #{p.created_at.to_date} -> id:#{p.id} - #{p.amount}zł - #{ p.email} -
+                      - if p.user
+                        | #{ p.user.user_name}  
                   - if current_user.admin
                     .col-md-3.my-auto.p-1.text-center
                       = link_to 'Edytuj ', edit_payment_path(p, event_id: o.event.id), class: "btn btn-primary btn-sm m-1"

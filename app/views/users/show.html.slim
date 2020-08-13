@@ -3,7 +3,7 @@
     - if @user.zin == false
       .offset-md-4
     .col-sm-5
-      .card.m-2.pb-1.text-center.border-0.text-dark
+      .card.m-2.pb-1.text-center.text-black.shadow.rounded
         - if (@user.picture == "")||(@user.picture == nil)
           = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
         - else
@@ -51,7 +51,7 @@
                 = link_to 'Edytuj', edit_user_path(@user), class: "btn btn-primary btn-sm m-1"
     - if @user.zin
       .col-sm-7
-        .card.m-2.pb-1.border-0.text-dark
+        .card.m-2.pb-1.text-black.shadow.rounded
           .card-header.text-center.p-2
             h3.m-0 
               strong = @user.user_name

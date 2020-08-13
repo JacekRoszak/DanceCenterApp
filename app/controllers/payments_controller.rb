@@ -21,16 +21,17 @@ class PaymentsController < ApplicationController
 
     # Płatnik
     user = User.find_by(email: payment_params[:email]) # jeżeli podanego e-mail nie ma w bazie
-    unless user                                        # znaczy, że nie ma użytkownika w bazie
-      temp_pass = SecureRandom.alphanumeric(10)        # więc bierzemy randomowe hasło
-      user = User.new(                                 # i go tworzymy
-        email: payment_params[:email], password: temp_pass, password_confirmation: temp_pass
-      )                                                # tworzymy nowego użytkownika tylko z podanego e-mail oraz wygenerowanego hasła
-      user.skip_confirmation!                          # użytkownik nie dostaje powiadomienia o założeniu konta
-      user.save!
+    # unless user                                        # znaczy, że nie ma użytkownika w bazie
+    # temp_pass = SecureRandom.alphanumeric(10)        # więc bierzemy randomowe hasło
+    #  user = User.new(                                 # i go tworzymy
+    #    email: payment_params[:email], password: temp_pass, password_confirmation: temp_pass
+    #  )                                                # tworzymy nowego użytkownika tylko z podanego e-mail oraz wygenerowanego hasła
+    #  user.skip_confirmation!                          # użytkownik nie dostaje powiadomienia o założeniu konta
+    #  user.save!
+    # end
+    if user
+      @payment.user_id = user.id
     end
-    @payment.user_id = user.id
-
     if @payment.save
       redirect_to payments_path, notice: 'Udło się wprowadzić wpłatę.'
     else                                          
