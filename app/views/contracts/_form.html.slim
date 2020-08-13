@@ -6,17 +6,17 @@
         - @contract.errors.full_messages.each do |message|
           li = message
   .offset-md-4.col-sm-4
-      .card.my-5.pb-1.text-center.border-0.text-dark.bg-light
-        .card-body.border-0.text-dark.bg-light
+      .card.my-5.pb-1.text-center.text-black.shadow.rounded
+        .card-body
           ul.list-group.list-group-flush
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.label "Instruktor"
               = f.select :user_id, User.where(zin: :true).map { |o| [o.user_name, o.id] }, style: "width: 100%"
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.label "Impreza"
               - if current_user.admin 
                 = f.select :event_id, Event.all.map { |o| [o.event_name, o.id] }, style: "width: 100%"  
               - else
                 = f.select :event_id, current_user.events.map { |o| [o.event_name, o.id] }, style: "width: 100%"
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.submit "Zapisz", class: "btn btn-primary btn-sm"

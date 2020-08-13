@@ -9,38 +9,38 @@
 
     .row
       .col-sm-4
-        .card.m-2.text-center.border-0.text-dark.bg-light
-          .card-body.bg-light
-            ul.list-group.list-group-flush.bg-light
-              li.list-group-item.bg-light style= "height: 73px"
+        .card.m-2.text-center.text-black.shadow.rounded
+          .card-body
+            ul.list-group.list-group-flush
+              li.list-group-item style= "height: 73px"
                 = f.label :event_name, "Nazwa:"
                 = f.text_field :event_name, style: "width:100%"
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label :adress, "Adres:"
                 = f.text_field :adress, style: "width:100%"
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label :picture, "Grafika:"
                 = f.text_field :picture, style: "width:100%"
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label :limit, "Limit osób:"
                 = f.number_field :limit, style: "width:100%"
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label :start_date, "Początek:"
                 = f.date_field :start_date
                 = f.time_field :start_time
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label :start_date, "Koniec:"
                 = f.date_field :end_date
                 = f.time_field :end_time
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label "Harmonogram:"
                 = f.text_area :schedule, :rows => 10, style: "width:100%"
-              li.list-group-item.pb-0.bg-light
+              li.list-group-item.pb-0
                 = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
                 br/
                 small.text-muted Utworzono: #{@event.created_at}
       .col-sm-8
-        .card.m-2.pb-1.border-0.text-dark.bg-light
+        .card.m-2.pb-1.text-dark
           .card-header
             strong Opis imprezy
           .card-body

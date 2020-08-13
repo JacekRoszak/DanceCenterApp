@@ -1,5 +1,5 @@
     = form_for @post do |f|
-      .card-body.border-0.text-dark.bg-light
+      .card-body.text-black.shadow.rounded
         - if @post.errors.any?
           #error_explanation
             h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"

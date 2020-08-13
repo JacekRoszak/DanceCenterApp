@@ -15,8 +15,8 @@
  *= require bootstrap-datepicker
  */
 
-  .bg-light{
-    background-color: none !important;
+  .transp{
+    background-image: asset_url("wool.png") !important;
 }
 
  .profile_img{
@@ -35,7 +35,7 @@
 .logo{
   width: 1140px;
   height: 150px;
-  background-image: asset_url('shakeshacklogo.png');
+  background-image: asset_url('pasek.jpg');
   border-radius: 12px;
   margin-bottom: 10px;
   border-style: none;
@@ -56,8 +56,8 @@
 }
 
 body {
-    background-image: asset_url('dark.png');
-    color: white;
+    background-image: asset_url('hexellence.png');
+    color: black;
   }
 
 .glowing-button {

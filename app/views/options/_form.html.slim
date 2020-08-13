@@ -9,29 +9,29 @@
 
 
   .offset-md-3.col-sm-6
-      .card.my-5.pb-1.text-center.border-0.text-dark.bg-light
-        .card-body.border-0.text-dark.bg-light
+      .card.my-5.pb-1.text-center.text-black.shadow.rounded
+        .card-body
           ul.list-group.list-group-flush
-            li.list-group-item.bg-light
+            li.list-group-item
               p Opcja dla:
               - if @event
                 = f.select :event_id, options_for_select(Event.where(user_id: current_user.id).map { |u| [u.event_name, u.id] }, :selected => @event.id), style: "width: 100%"   
               - else
                 = f.select :event_id, Event.where(user_id: current_user.id).map { |u| [u.event_name, u.id] }, style: "width: 100%"   
-            li.list-group-item.bg-light 
+            li.list-group-item
               = f.label "Numer opcji:"
               - if @event
                 = f.number_field :number, value: @event.options.count+1
               - else
                 = f.number_field :number
-            li.list-group-item.bg-light 
+            li.list-group-item
               = f.label "Nazwa:"
               = f.text_field :name
-            li.list-group-item.bg-light 
+            li.list-group-item
               = f.label "Cena:"
               = f.number_field :amount
-            li.list-group-item.bg-light 
+            li.list-group-item
               = f.label :description
               = f.text_area :description, style: "width: 100%"
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"

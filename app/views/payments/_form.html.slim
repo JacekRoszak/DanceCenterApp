@@ -10,31 +10,31 @@
         - @payment.errors.full_messages.each do |message|
           li = message
   .offset-md-4.col-sm-4
-      .card.my-5.pb-1.text-center.border-0.text-dark.bg-light
-        .card-body.border-0.text-dark.bg-light
+      .card.my-5.pb-1.text-center.text-black.shadow.rounded
+        .card-body
           ul.list-group.list-group-flush
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.label "Kwota"
               = f.number_field :amount
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.label "E-mail"
               = f.text_field :email
             - if @option
               / jeżeli sama opja jest z góry wybrana  "+"
               = f.hidden_field :option_id, value: @option.id
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label "Event"
                 strong = @option.event.event_name
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label "Opcja"
                 = @option.name
                 / jeżeli sam event jest z góry wybrany "Edytuj"
             - if @event
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label "Event"
                 strong = @event.event_name
-              li.list-group-item.bg-light
+              li.list-group-item
                 = f.label "Opcja"
                 = f.select :option_id, @event.options.map { |o| [o.name, o.id] }, style: "width: 100%"
-            li.list-group-item.bg-light
+            li.list-group-item
               = f.submit "Zapisz", class: "btn btn-primary btn-sm"
