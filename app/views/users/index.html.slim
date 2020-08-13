@@ -5,7 +5,7 @@
       = link_to 'Nowy użytkownik', new_user_path, class: "btn btn-primary mt-1 mb-3"
   - @users.reverse_each do |user|
       - if (((current_user.zin)||(current_user.can_host))&&((user.zin)||(user.can_host))||current_user.admin)
-        .card.mb-2.border-0.text-dark.bg-light
+        .card.mb-2.text-black.shadow.rounded
           .row.no-gutters
             .col-md-1.small_profile_img
               - if (user.picture == "")||(user.picture == nil)
@@ -31,7 +31,7 @@
                 - if user.admin
                   strong Admin&#10004;
             .col-md-3.my-auto
-              .card-body.p-1.text-center.border-0.text-dark.bg-light
+              .card-body.p-1.text-center
                 = link_to 'Pokaż', user, class: "btn btn-primary btn-sm m-1 mt-2"
                 - if can? :update, user
                   = link_to 'Edytuj', edit_user_path(user), class: "btn btn-primary btn-sm m-1 mt-2"

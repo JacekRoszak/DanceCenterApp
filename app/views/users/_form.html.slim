@@ -36,6 +36,9 @@
                     .col-sm-4
                       | Host #{f.check_box :can_host}
               li.list-group-item.pb-0
+                = f.label "Kolor postów"
+                = f.color_field :post_color
+              li.list-group-item.pb-0
                 = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
                 = link_to "Zmień hasło",edit_user_registration_path, class: "btn btn-primary btn-sm m-1"
                 br/

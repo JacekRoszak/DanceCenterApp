@@ -5,25 +5,33 @@
       = link_to 'Napisz coś!', new_post_path, class: "btn btn-primary mt-1 glowing-button"
     br/
     br/
-
-  - @posts.reverse_each do |post|
-      .card.mb-2.text-black.shadow.rounded
+  .card.text-black.shadow.rounded.p-2
+      - @posts.reverse_each do |post|
         .row.no-gutters
-          .col-md-1.small_profile_img style="background-image: url('assets/profile#{post.user_id.to_s}.jpg')"
-          .col-md-8.p-1.d-flex
-            .my-auto
-              strong = post.user&.user_name
-              | ~ #{post.post_content}
-          .col-md-3.my-auto
-            .card-body.p-1.text-center
-              = link_to 'Pokaż', post, class: "btn btn-primary btn-sm m-1 mt-2"
-              - if current_user
-                - if can? :update, post
-                  = link_to 'Edytuj', edit_post_path(post), class: "btn btn-primary btn-sm m-1 mt-2"
-                - if can? :destroy, post
-                  = link_to 'Usuń', post, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
-              p.card-text.text-center
-                small.text-muted #{post.created_at}
+            .col-md-9.p-1.d-flex 
+              .my-auto
+                - if !post.user
+                  strong ShakeShack 
+                  | ~ #{post.post_content}
+                - else
+                  div style="color: #{post.user.post_color}"
+                    strong = post.user.user_name
+                    |  ~ #{post.post_content}
+            - if !current_user
+              .offset-md-1
+            .col-md-2.my-auto
+              .text-right
+                small.text-muted #{post.created_at.to_s.split(" ")[0]}
+                |  
+                small.text-muted #{post.created_at.to_s.split(" ")[1]}
+            - if current_user
+              .col-md-1.my-auto
+                .card-body.p-1.text-right
+                  - if can? :update, post
+                    = link_to 'Edytuj', edit_post_path(post)
+                  |  
+                  - if can? :destroy, post
+                    = link_to 'Usuń', post, data: { confirm: 'Are you sure?' }, method: :delete
 
 
 
