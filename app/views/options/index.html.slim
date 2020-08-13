@@ -1,8 +1,7 @@
 .container
     .text-center
-      h1 Lista opcji
       - if (current_user)&&(can? :create, Option)
-        = link_to 'Nowa opcja', new_option_path, class: "btn btn-primary mt-1 mb-4"
+        = link_to 'Dodaj opcję', new_option_path, class: "btn btn-primary btn-lg mt-1 mb-4"
     - Event.all.reverse_each do |x|
       - if (x.user_id == current_user.id)||(current_user.admin)
         h3.mt-4.mb-2.text-center  = x.event_name

@@ -1,9 +1,7 @@
 .container.text-center
-  h1 Tablica Imprez
-  br/
   - if current_user
     - if (current_user.can_host)&&(can? :create, Event)
-      = link_to 'Nowa Impreza',  new_event_path, class: "btn btn-primary btn-sm "
+      = link_to 'Dodaj imprezę',  new_event_path, class: "btn btn-primary btn-lg"
 
 
   .d-block.mx-auto
