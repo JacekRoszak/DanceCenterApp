@@ -1,0 +1,26 @@
+  .d-block.mx-auto
+    - @events.reverse_each do |event|
+        .card.m-3.col-md-3.p-0.d-inline-block.text-center.shadow.rounded
+          - if (event.picture == "")||(event.picture == nil)
+            = image_tag  "https://www.dropbox.com/s/ojhh9xuqd5hv0cc/profile.jpg?raw=1", width: '100%', class: "mx-auto"
+          - else
+            = image_tag  event.picture, width: '100%', class: "mx-auto"
+          .card-body.p-0.text-black
+            ul.list-group.list-group-flush.transp
+              li.list-group-item.text-black
+                strong = event.event_name
+              li.list-group-item.text-black
+                p.m-1 Gospodarz:
+                strong #{User.find(event.user_id).user_name}
+              li.list-group-item.text-black Od: #{event.start_date}
+              li.list-group-item.text-black Do: #{event.end_date}
+              li.list-group-item.text-black
+                = link_to 'Pokaż', event, class: "btn btn-primary btn-sm m-1"
+                - if (can? :read, event)&&(current_user)
+                  - if (event.user_id == current_user.id)&&(can? :update, Event)
+                  - if can? :update, event
+                    = link_to 'Edytuj',  edit_event_path(event), class: "btn btn-primary btn-sm m-1"
+                  - if can? :destroy, event
+                    = link_to 'Usuń', event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"
+                br/
+                small.text-muted Utworzono: #{event.created_at}
