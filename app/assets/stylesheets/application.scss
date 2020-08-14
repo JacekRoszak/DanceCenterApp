@@ -43,7 +43,9 @@
 }
 
 .logo-sm{
-  width: auto;
+  width: 480px;
+  height: 297px;
+  background-image: asset_url('pasek-sm.jpg');
   border-radius: 12px;
   margin-bottom: 10px;
   border-style: none;

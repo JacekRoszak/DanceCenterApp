@@ -2,9 +2,9 @@ nav.navbar.navbar-expand-lg
   ul.mx-auto.p-0.text-center
     li style="list-style: none"
       .col-12.d-none.d-xl-block.my-nav
-        .logo
+        = link_to  "", root_path,   class: "btn logo"
       .d-block.d-xl-none
-        = image_tag  "pasek-sm.jpg", style: "logo-sm"
+        = link_to  "", root_path,   class: "btn logo-sm"
       button.navbar-toggler.mx-auto type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
         p.btn.btn-primary.btn-lg MENU
     li.collapse.navbar-collapse.mt-1#navbarNav
