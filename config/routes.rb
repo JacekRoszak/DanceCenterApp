@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :options
   resources :events
   devise_for :users
-  root 'posts#index'
+  root 'pages#home'
   scope "/admin" do
     resources :users
   end

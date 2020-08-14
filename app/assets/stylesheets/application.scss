@@ -15,6 +15,10 @@
  *= require bootstrap-datepicker
  */
 
+  #my_shout_box{
+      max-height:300px;
+      overflow-y: scroll;
+  }
 
  .profile_img{
    height: 320px;
