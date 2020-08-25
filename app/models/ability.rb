@@ -8,6 +8,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     can :read, Event
     can :read, Post
+    can :read, User
 
     if !(user == nil)
       if user.admin?
