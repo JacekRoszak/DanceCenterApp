@@ -1,4 +1,4 @@
-.container.text-center
+.container.page-container.text-center
   - if current_user
     - if (current_user.can_host)&&(can? :create, Event)
       = link_to 'Dodaj imprezę',  new_event_path, class: "btn btn-primary btn-lg"

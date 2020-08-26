@@ -15,6 +15,96 @@
  *= require bootstrap-datepicker
  */
 
+ @media (max-width: 991px){
+    body{
+      padding: 0;
+      margin: 0;
+    }
+  
+    #main-container{
+        padding: 0;
+        margin: 0%;
+        width: 100%;
+    }
+    #events-card{
+        margin: 15px 0px 0px 0px !important;
+
+    }
+    nav ul{
+      margin: 0 !important;
+    }
+    nav ul button{
+      margin: 3px !important;
+      padding: 0 !important;
+    }
+
+    nav ul button p{
+      margin: 0;
+    }
+}
+
+
+
+
+  @media (max-width: 582px){
+    .logo{
+      background-image: asset_url('pasek-xs.jpg');
+      background-repeat: no-repeat;
+      width: 100vw;
+      height: 18vw;
+      border-style: none;
+      background-size: cover;
+      padding: 0;
+      margin: 0;
+    }
+    .page-container{
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100vw !important;
+    }
+    #events-card{
+    }
+
+  }
+
+
+  @media (min-width: 583px) and (max-width: 1199px){
+    .logo{
+        background-image: asset_url('pasek-sm.jpg');
+        max-width: 479px;
+        max-height: 297px;
+        background-repeat: no-repeat;
+        width: 70vw;
+        height: 43vw;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        border-style: none;
+        background-size: contain;
+        padding: 0;
+        margin: 0;
+    }
+ }
+  @media (min-width: 1200px){
+    .logo{
+        background-image: asset_url('pasek.jpg');
+        width: 1140px;
+        height: 150px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        border-style: none;
+      
+    }
+
+ }
+ #events-card{
+  padding: 0;
+  margin: 10px;
+}
+
+  ul{
+    list-style-type: none;
+  }
+
   #my_shout_box{
       max-height:300px;
       overflow-y: scroll;
@@ -32,24 +122,6 @@
    background-size: 60px;
    background-position: center;
  }
-
-.logo{
-  width: 1140px;
-  height: 150px;
-  background-image: asset_url('pasek.jpg');
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border-style: none;
-}
-
-.logo-sm{
-  width: 480px;
-  height: 297px;
-  background-image: asset_url('pasek-sm.jpg');
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border-style: none;
-}
 
 .btn-primary{
   color: WHITE !important;
