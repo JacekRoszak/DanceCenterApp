@@ -1,24 +1,25 @@
   .card.text-black.shadow.rounded.p-2#my_shout_box
     - @posts.reverse_each do |post|
       .row.no-gutters
-          .col-md-9.p-1.d-flex.text-left 
+          .col-lg-9.p-1.d-flex.text-left 
             .my-auto.text-left
               - if !post.user
-                strong ShakeShack 
-                | ~ #{post.post_content}
+                .post-line 
+                  strong ShakeShack 
+                  | ~ #{post.post_content}
               - else
-                div style="color: #{post.user.post_color}"
+                .post-line style="color: #{post.user.post_color}"
                   strong = post.user.user_name
                   |  ~ #{post.post_content}
           - if current_user
-            .col-md-1.my-auto
+            .col-lg-1.my-auto
               .card-body.p-1.text-right
                 - if can? :update, post
                   = link_to 'Edytuj', edit_post_path(post)
                 |  
                 - if can? :destroy, post
                   = link_to 'Usuń', post, data: { confirm: 'Are you sure?' }, method: :delete
-          .col-md-2.my-auto
+          .col-lg-2.my-auto
             .text-right
               small.text-muted #{post.created_at.to_s.split(" ")[0]}
               |  
