@@ -43,10 +43,16 @@
     }
 }
 
-
-
-
   @media (max-width: 582px){
+    .page-container{
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100vw !important;
+    }
+
+  }
+
+  @media (max-width: 991px){
     .logo{
       background-image: asset_url('pasek-xs.jpg');
       background-repeat: no-repeat;
@@ -57,18 +63,14 @@
       padding: 0;
       margin: 0;
     }
-    .page-container{
-      padding: 0 !important;
-      margin: 0 !important;
-      width: 100vw !important;
-    }
+
     #events-card{
     }
 
   }
 
 
-  @media (min-width: 583px) and (max-width: 1199px){
+  @media (min-width: 992px) and (max-width: 1199px){
     .logo{
         background-image: asset_url('pasek-sm.jpg');
         max-width: 479px;

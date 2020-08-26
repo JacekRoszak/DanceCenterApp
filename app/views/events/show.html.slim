@@ -1,6 +1,6 @@
-.container
+.container.page-container
   .row
-    .col-sm-4
+    .col-lg-4
       .card.m-2.text-center.text-black.shadow.rounded
         .card-body.p-0
           ul.list-group.list-group-flush
@@ -51,7 +51,7 @@
                 = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"
               br/
               small.text-muted Utworzono: #{@event.created_at}
-    .col-sm-8
+    .col-lg-8
       .card.m-2.pb-1.text-black.shadow.rounded
         .card-header.text-center.p-0
           - if (@event.picture == "")||(@event.picture == nil)
