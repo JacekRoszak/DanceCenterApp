@@ -1,4 +1,25 @@
 .container.page-container
+    .shadow.text-center.p-2.rounded.mb-3
+        h1 Strona dla miłośników imprez Zumbowych.
+
+        p.mb-1
+            a.btn.btn-primary.m-2 aria-controls="collapseExample1" aria-expanded="false" data-toggle="collapse" href="#collapseExample1" role="button" 
+                | Organizatorzy
+            a.btn.btn-primary.m-2 aria-controls="collapseExample2" aria-expanded="false" data-toggle="collapse" href="#collapseExample2" role="button" 
+                | Uczestnicy
+            a.btn.btn-primary.m-2 aria-controls="collapseExample3" aria-expanded="false" data-toggle="collapse" href="#collapseExample3" role="button" 
+                | Instruktorzy
+        #collapseExample1.collapse
+            .card.card-body.mb-1
+                .p1 Organizatorzy założą swoje konto, będą tworzyć wydarzenia dodając harmonogram, grafikę, plakat, instruktorów i wszystkie niezbędne szczegóły. 
+        #collapseExample2.collapse
+            .card.card-body.mb-1
+                .p1 Uczestnicy znajdą tu najlepsze imprezy w regionie, poznają wszystkie szczegóły. Dowiedzą się ile kosztuje każda opcja i co wchodzi w jej harmonogram. Sprawdzą jak dokonać płatności. Poznają także prezenterów którzy tą imprezę prowadzą.
+        #collapseExample3.collapse
+            .card.card-body.mb-1
+                .p1 Instruktorzy mogą tworzyć swoją stronę opisującą siebie jako prezentera. Pozwoli ona miłośnikom zumby śledzić ich, jak i imprezy na których występują.
+
+
     = render  'posts/shoutbox'
     = render  'events/events_expo'
 

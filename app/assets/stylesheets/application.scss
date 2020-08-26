@@ -14,6 +14,10 @@
  *= require_self
  *= require bootstrap-datepicker
  */
+  h1 {  font-size: 36px;
+        text-shadow: 1px 1px gray;}
+  .p1 { font-size: 18px;
+        line-height: 1.2;}
 
  @media (max-width: 991px){
     body{
@@ -130,6 +134,10 @@
 
 .btn-primary{
   color: WHITE !important;
+}
+
+.card{
+  background: transparent !important;
 }
 
 .color-primary a{
