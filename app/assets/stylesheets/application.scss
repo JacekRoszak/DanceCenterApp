@@ -14,10 +14,16 @@
  *= require_self
  *= require bootstrap-datepicker
  */
-  h1 {  font-size: 36px;
-        text-shadow: 1px 1px gray;}
-  .p1 { font-size: 18px;
-        line-height: 1.2;}
+h1 {  font-size: 32px;
+      text-shadow: 1px 1px gray;}
+h2 {  font-size: 28px;
+      text-shadow: 1px 1px gray;}
+h3 {  font-size: 26px;
+      text-shadow: 1px 1px gray;}
+h4 {  font-size: 24px;
+      text-shadow: 1px 1px gray;}
+.p1 { font-size: 18px;
+      line-height: 1.2;}
 
  @media (max-width: 991px){
     body{
@@ -115,11 +121,12 @@
   }
 
   #my_shout_box{
-      max-height:300px;
-      overflow-y: scroll;
+    max-height:400px;
+    overflow-y: scroll;
   }
 
- .profile_img{
+
+.profile_img{
    height: 320px;
    width: 320px;
    margin-left: auto;
@@ -136,8 +143,8 @@
   color: WHITE !important;
 }
 
-.card{
-  background: transparent !important;
+.card, .bg-trans, .list-group-item{
+  background: rgba(255, 255, 255, 0.5)
 }
 
 .color-primary a{
@@ -157,6 +164,7 @@
 body {
     background-image: asset_url('hexellence.png');
     color: black;
+    font-family: 'Lato', sans-serif;
   }
 
 .glowing-button {
@@ -167,7 +175,6 @@ body {
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: Arial;
     font-size: 20px;
     padding: 5px 10px;
     text-align: center;
