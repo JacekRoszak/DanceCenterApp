@@ -24,10 +24,10 @@ h3 {  font-size: 26px;
       text-shadow: 1px 1px gray;}
 p{    line-height: 1.2;}
 
-@media (min-width: 0px) and (max-width: 582px)  { body {font-size: 38px !important;} p{font-size: 18px !important;} }
-@media (min-width: 582px) and (max-width: 991px){ body {font-size: 22px !important;} p{font-size: 24px !important;} }
-@media (min-width: 992) and (max-width: 1199px) { body {font-size: 22px !important;} p{font-size: 18px !important;} }
-@media (min-width: 1200px)                      { body {font-size: 14px !important;} p{font-size: 13px !important;} }
+@media (min-width: 0px) and (max-width: 582px)  { body {font-size: 38px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 26px !important;}}
+@media (min-width: 582px) and (max-width: 991px){ body {font-size: 22px !important;} p{font-size: 24px !important;} .btn-lg{font-size: 26px !important;}}
+@media (min-width: 992) and (max-width: 1199px) { body {font-size: 22px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 26px !important;}}
+@media (min-width: 1200px)                      { body {font-size: 14px !important;} p{font-size: 13px !important;} .btn-lg{font-size: 18px !important;}}
 
 
 
