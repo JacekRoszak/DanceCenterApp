@@ -1,4 +1,4 @@
-.container
+.container.page-container
   = semantic_form_for @event do |f|
     - if @event.errors.any?
       #error_explanation
@@ -6,13 +6,12 @@
         ul
           - @event.errors.full_messages.each do |message|
             li = message
-
     .row
-      .col-sm-4
+      .col-lg-4
         .card.m-2.text-center.text-black.shadow.rounded
           .card-body
             ul.list-group.list-group-flush
-              li.list-group-item style= "height: 73px"
+              li.list-group-item
                 = f.label :event_name, "Nazwa:"
                 = f.text_field :event_name, style: "width:100%"
               li.list-group-item
@@ -36,10 +35,10 @@
                 = f.label "Harmonogram:"
                 = f.text_area :schedule, :rows => 10, style: "width:100%"
               li.list-group-item.pb-0
-                = f.submit "Zapisz", class: "btn btn-primary btn-sm m-1"
+                = f.submit "Zapisz", class: "btn btn-lg btn-primary btn-sm m-1"
                 br/
                 small.text-muted Utworzono: #{@event.created_at}
-      .col-sm-8
+      .col-lg-8
         .card.m-2.pb-1.text-dark
           .card-header
             strong Opis imprezy

@@ -25,14 +25,17 @@ h3 {  font-size: 26px;
 p{    line-height: 1.2;
       margin-bottom: 0;}
 
-@media (min-width: 0px) and (max-width: 582px)  { body {font-size: 38px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 34px !important;}}
+@media (min-width: 0px) and (max-width: 581px)  { body {font-size: 38px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 34px !important;}}
 @media (min-width: 582px) and (max-width: 991px){ body {font-size: 22px !important;} p{font-size: 24px !important;} .btn-lg{font-size: 34px !important;}}
 @media (min-width: 992) and (max-width: 1199px) { body {font-size: 22px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 26px !important;}}
 @media (min-width: 1200px)                      { body {font-size: 13px !important;} p{font-size: 13px !important;} .btn-lg{font-size: 18px !important;}}
 
 
 
-
+ul{
+  font-size: inherit !important;
+  line-height: 1.2;
+}
 
 
   @media (max-width: 991px){

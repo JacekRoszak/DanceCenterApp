@@ -6,30 +6,35 @@
           ul.list-group.list-group-flush
             li.list-group-item.color-primary
               p.m-1 Gospodarz:
-              = link_to @event.user.user_name, @event.user, class: "btn btn-outline-primary btn-sm m-1"
+              = link_to @event.user.user_name, @event.user, class: "btn btn-lg btn-outline-primary btn-sm m-1"
             li.list-group-item
               .color-primary
                 p.m-1 Instruktorzy:
                 - @event.instructors.each do |instructor|
-                  = link_to instructor.user_name, instructor, class: "btn btn-outline-primary btn-sm m-1"
+                  = link_to instructor.user_name, instructor, class: "btn btn-lg btn-outline-primary btn-sm m-1"
                   br/
               - if (can? :create, Contract)&&(current_user.id == @event.user_id)
-                 = link_to  "Przypisz instruktora", new_contract_path(event_id: @event.id), style: "color: white !important",  class: "btn btn-primary btn-sm m-1"
+                 = link_to  "Przypisz instruktora", new_contract_path(event_id: @event.id), style: "color: white !important",  class: "btn btn-lg btn-primary btn-sm m-1"
             li.list-group-item
               p.m-1 Adress:
-              strong #{@event.adress}
+              p 
+                strong #{@event.adress}
             li.list-group-item
+              p  
                 | Limit osób:
                 strong #{@event.limit}
             li.list-group-item
+              p
                 | Biletów sprzedanych:
                 strong  0
             li.list-group-item
-              | Od:
-              strong #{@event.start_date}
+              p
+                | Od:
+                strong #{@event.start_date}
             li.list-group-item
-              | Do:
-              strong #{@event.end_date}
+              p
+                | Do:
+                strong #{@event.end_date}
             li.list-group-item
               p.m-1 Harmonogram:
               .text-left
@@ -38,19 +43,21 @@
               p.m-1 Opcje biletu:
               .text-left
                 - @event.options.map do |y|
-                  strong #{y.number}. #{y.name} - #{y.amount} zł
-                  br/
-                  small = y.description
-                  br/
+                  p 
+                    strong #{y.number}. #{y.name} - #{y.amount} zł
+                    br/
+                    small = y.description
+                    br/
             li.list-group-item.text-center
               - if (can? :update, Option)&&(current_user.id == @event.user_id)
-                 = link_to  "Opcje", new_option_path(event_id: @event.id),  class: "btn btn-primary btn-sm m-1"
+                 = link_to  "Opcje", new_option_path(event_id: @event.id),  class: "btn btn-lg btn-primary btn-sm m-1"
               - if can? :update, @event
-                = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-primary btn-sm m-1"
+                = link_to 'Edytuj',  edit_event_path(@event), class: "btn btn-lg btn-primary btn-sm m-1"
               - if can? :destroy, @event
-                = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1"
+                = link_to 'Usuń', @event, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-lg btn-primary btn-sm m-1"
               br/
-              small.text-muted Utworzono: #{@event.created_at}
+              p
+                small.text-muted Utworzono: #{@event.created_at}
     .col-lg-8
       .card.m-2.pb-1.text-black.shadow.rounded
         .card-header.text-center.p-0
@@ -59,4 +66,5 @@
           - else
             = image_tag  @event.picture, width: '100%', class: "mx-auto"
         .card-body.text-left
-          = simple_format(@event.description)
+          p
+            = simple_format(@event.description)
