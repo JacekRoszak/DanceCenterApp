@@ -4,6 +4,12 @@ class ContractsController < ApplicationController
 
   def index
     @contracts = Contract.all
+    if !params[:event_id]
+      @event = Event.all
+    else
+      @event = Event.where(id: params[:event_id])
+    end
+
   end
 
   def show

@@ -7,19 +7,15 @@ nav.navbar.navbar-expand-lg.p-0
     li.collapse.navbar-collapse.mt-1#navbarNav
       ul.navbar-nav.mx-auto
 
+        li.nav-item.m-2
+          = link_to  "Strona główna", root_path,  class: "btn btn-primary btn-lg"
         - if current_user
           - if can? :read, Event
             li.nav-item.m-2
               = link_to  "Imprezy", events_path,  class: "btn btn-primary btn-lg"
-        li.nav-item.m-2
-          = link_to  "Strona główna", root_path,  class: "btn btn-primary btn-lg"
         - if current_user&.admin
           li.nav-item.m-2
-            = link_to  "Opcje", options_path,  class: "btn btn-primary btn-lg"
-          li.nav-item.m-2
             = link_to  "Płatności", payments_path,  class: "btn btn-primary btn-lg"
-          li.nav-item.m-2
-            = link_to  "Kontrakty", contracts_path,  class: "btn btn-primary btn-lg"
         - if current_user
           - if ((current_user.zin)||(current_user.can_host))&&(!current_user.admin)
             li.nav-item.m-2

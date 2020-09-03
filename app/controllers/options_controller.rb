@@ -4,6 +4,11 @@ class OptionsController < ApplicationController
 
   def index
     @options = Option.all
+    if !params[:event_id]
+      @event = Event.all
+    else
+      @event = Event.where(id: params[:event_id])
+    end
   end
 
   def show

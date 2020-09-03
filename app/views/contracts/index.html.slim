@@ -3,31 +3,30 @@
     .text-center
       h1 Twoi prezenterzy
       - if can? :create, Contract
-        = link_to 'Przypisz instruktora', new_contract_path, class: "btn btn-primary mt-1 mb-4"
-    - Event.all.reverse_each do |event|
+        = link_to 'Przypisz instruktora', new_contract_path(event_id: @event.first.id), class: "btn btn-primary mt-1 mb-4"
+    - @event.all.reverse_each do |event|
       - if (current_user.id == event.user_id)||(current_user.admin)
-
-          - if (event.start_date < DateTime.now)
-            .mt-2.mb-1.h4.text-center = event.event_name
-            .card.mb-5.col-sm-4.offset-md-4.text-black.shadow.rounded
-              - event.contracts.reverse_each do |cont|
-                .row.no-gutters
-                  .col-md-10.p-1.d-flex
-                    .my-auto.ml-2
+        - if (event.start_date < DateTime.now)
+          .mt-2.mb-1.h4.text-center = event.event_name
+          .card.mb-5.col-sm-4.offset-md-4.text-black.shadow.rounded
+            - event.contracts.reverse_each do |cont|
+              .row.no-gutters
+                .col-md-10.p-1.d-flex
+                  .my-auto.ml-2
+                    .m-0.h6
+                      = cont.user.user_name
+                .col-md-2.my-auto
+                  .card-body.p-1.text-center
+                    = link_to 'Usuń', cont, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
+        - else
+          .mt-2.mb-1.h4.text-center = event.event_name
+          .card.mb-5.col-sm-4.offset-md-4.shadow.rounded.text-dark.bg-light
+            - event.contracts.reverse_each do |cont|
+              .row.no-gutters
+                .col-md-10.p-1.d-flex
+                  .my-auto.ml-2
                       .m-0.h6
                         = cont.user.user_name
-                  .col-md-2.my-auto
-                    .card-body.p-1.text-center
-                      = link_to 'Usuń', cont, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
-          - else
-            .mt-2.mb-1.h4.text-center = event.event_name
-            .card.mb-5.col-sm-4.offset-md-4.shadow.rounded.text-dark.bg-light
-              - event.contracts.reverse_each do |cont|
-                .row.no-gutters
-                  .col-md-10.p-1.d-flex
-                    .my-auto.ml-2
-                        .m-0.h6
-                          = cont.user.user_name
-                  .col-md-2.my-auto
-                    .card-body.p-1.text-center
-                      = link_to 'Usuń', cont, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"
+                .col-md-2.my-auto
+                  .card-body.p-1.text-center
+                    = link_to 'Usuń', cont, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm m-1 mt-2"

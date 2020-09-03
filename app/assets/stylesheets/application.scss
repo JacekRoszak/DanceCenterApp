@@ -30,7 +30,9 @@ p{    line-height: 1.2;
 @media (min-width: 992) and (max-width: 1199px) { body {font-size: 22px !important;} p{font-size: 18px !important;} .btn-lg{font-size: 26px !important;}}
 @media (min-width: 1200px)                      { body {font-size: 13px !important;} p{font-size: 13px !important;} .btn-lg{font-size: 18px !important;}}
 
-
+.btn-lg{
+  box-shadow: 2px 2px gray;
+}
 
 ul{
   font-size: inherit !important;
